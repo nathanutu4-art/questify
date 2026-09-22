@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <filter id="rpgCursorGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="1" dy="1.5" stdDeviation="1.2" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+    <linearGradient id="bladeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fffbeb"/>
+      <stop offset="35%" stop-color="#fef08a"/>
+      <stop offset="70%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#ca8a04"/>
+    </linearGradient>
+  </defs>
+  <g filter="url(#rpgCursorGlow)">
+    <!-- Ornate Golden RPG Blade Pointer -->
+    <path d="M2 2 L3 17 L8 13 L12 23 L15 22 L11 12 L17 12 Z" fill="url(#bladeGrad)" stroke="#27180c" stroke-width="1.2" stroke-linejoin="round"/>
+    <!-- Inner faceted gold ridge -->
+    <path d="M4 4 L5 14 L8 11.5 L12.5 21 L13.5 20.5 L9.5 11 L14.5 11 Z" fill="#fef9c3" opacity="0.6"/>
+    <!-- Golden crossguard gem -->
+    <circle cx="8" cy="12" r="1.8" fill="#ef4444" stroke="#78350f" stroke-width="0.8"/>
+    <circle cx="7.5" cy="11.5" r="0.6" fill="#ffffff"/>
+  </g>
+</svg>
+

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <filter id="rpgDefaultShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="1" dy="1.5" stdDeviation="1.2" flood-color="#000000" flood-opacity="0.85"/>
+    </filter>
+    <linearGradient id="defaultGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fae8b6"/>
+      <stop offset="50%" stop-color="#d6ba8d"/>
+      <stop offset="100%" stop-color="#936838"/>
+    </linearGradient>
+  </defs>
+  <g filter="url(#rpgDefaultShadow)">
+    <path d="M2 2 L3 18 L7.5 14 L11 22 L13.5 21 L10 13 L16 13 Z" fill="url(#defaultGoldGrad)" stroke="#1a120b" stroke-width="1.2" stroke-linejoin="round"/>
+    <path d="M3.8 4 L4.5 15 L7.5 12.5 L11 20 L12 19.5 L8.5 12 L13.5 12 Z" fill="#fffbeb" opacity="0.4"/>
+  </g>
+</svg>
+

@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-cinzel-family: var(--font-cinzel), "Cinzel", Georgia, serif;
+    --font-medieval-family: var(--font-medieval), "MedievalSharp", cursive, serif;
+    --color-parchment-light: #f5e8cf;
+    --color-parchment-base: #ebd5ad;
+    --color-parchment-dark: #d8bc8a;
+    --color-parchment-shadow: #734f24;
+    --color-ink-dark: #221309;
+    --color-ink-sepia: #4a2c17;
+    --color-wood-dark: #1e130c;
+    --color-wood-medium: #301f14;
+    --color-wood-light: #4c3221;
+    --color-gold-bright: #f6d87e;
+    --color-gold-base: #cda434;
+    --color-gold-dark: #835f18;
+  }
+
+  body {
+    background-color: #0b0c10;
+    color: #f4ebd0;
+    font-family: var(--font-cinzel-family);
+    overflow-x: hidden;
+    cursor: url("/cursor-rpg-default.svg") 2 2, auto;
+  }
+}
+
+/* Custom Medieval RPG Golden Cursor for all buttons, links & interactive controls */
+button,
+a,
+[role="button"],
+.cursor-pointer,
+select,
+input[type="submit"],
+input[type="button"],
+nav button,
+header button {
+  cursor: url("/cursor-rpg-pointer.svg") 2 2, pointer !important;
+}
+
+.font-cinzel {
+  font-family: var(--font-cinzel), "Cinzel", Georgia, serif;
+}
+
+.font-medieval {
+  font-family: var(--font-medieval), "MedievalSharp", cursive, serif;
+}
+
+/* Custom Scrollbar for Fantasy RPG UI */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #150f0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #47301e;
+  border: 1px solid #7d5431;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #cda434;
+}
+
+/* Torch Flame Flicker Animation */
+@keyframes flameFlicker {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 25px rgba(245, 158, 11, 0.8)) drop-shadow(0 0 50px rgba(239, 68, 68, 0.5));
+  }
+  25% {
+    transform: scale(1.04) translate(1px, -1px);
+    opacity: 1;
+    filter: drop-shadow(0 0 30px rgba(251, 191, 36, 0.9)) drop-shadow(0 0 60px rgba(220, 38, 38, 0.6));
+  }
+  50% {
+    transform: scale(0.97) translate(-1px, 1px);
+    opacity: 0.85;
+    filter: drop-shadow(0 0 22px rgba(245, 158, 11, 0.75)) drop-shadow(0 0 45px rgba(239, 68, 68, 0.45));
+  }
+  75% {
+    transform: scale(1.02) translate(1px, 0);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 28px rgba(251, 191, 36, 0.85)) drop-shadow(0 0 55px rgba(220, 38, 38, 0.55));
+  }
+}
+
+.torch-glow {
+  animation: flameFlicker 2.5s infinite ease-in-out;
+}
+
+/* Parchment Scroll Surface - Soft Pastel Cream */
+.rpg-parchment {
+  background-color: #f5ebd7;
+  border-color: #b89363;
+  box-shadow: 
+    inset 0 0 20px rgba(115, 79, 36, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Ornate Carved Wood Frame - Soft Matte Solid Wood */
+.rpg-wood-frame {
+  background: #1f1712;
+  border: 3px solid #4a3424;
+  box-shadow: 
+    inset 0 1px 3px rgba(255, 255, 255, 0.08),
+    0 8px 25px rgba(0, 0, 0, 0.7);
+}
+
+/* Carved Stone Alcove - Soft Matte Slate */
+.rpg-stone-alcove {
+  background: #151b24;
+  border: 3px solid #2d3748;
+  box-shadow: 
+    inset 0 0 15px rgba(0, 0, 0, 0.6),
+    0 6px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Metal Beveled Trim */
+.rpg-bronze-border {
+  border: 2px solid #a68252;
+  box-shadow: 
+    inset 0 1px 0 rgba(255, 235, 179, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Wax Seal Crimson Button - Pastel Terracotta */
+.rpg-wax-seal {
+  background: #b85d56;
+  border: 2px solid #e8a59e;
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.3),
+    0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Golden Ribbon Header */
+.rpg-golden-ribbon {
+  background: linear-gradient(180deg, #edd18a 0%, #c9a03c 45%, #9b7520 100%);
+  box-shadow: 
+    inset 0 1px 2px rgba(255, 255, 255, 0.6),
+    inset 0 -1px 3px rgba(0, 0, 0, 0.5),
+    0 4px 10px rgba(0, 0, 0, 0.45);
+}
+
+/* Carved Runic Inscriptions (Matte stone & brass, no neon glow) */
+.rpg-rune-blue {
+  color: #7dd3fc;
+  opacity: 0.75;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.rpg-rune-gold {
+  color: #ca8a04;
+  opacity: 0.8;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* Hero background offset: 20% to the right on mobile, centered on desktop */
+.hero-bg-mobile-offset {
+  object-position: 20% center;
+}
+@media (min-width: 768px) {
+  .hero-bg-mobile-offset {
+    object-position: center center;
+  }
+}
+
+/* Fallback for browsers without CSS SVG mask-image support */
+@supports (not (mask-image: url(#fluidWaterMask))) and (not (-webkit-mask-image: url(#fluidWaterMask))) {
+  .hero-fluid-reveal {
+    clip-path: url(#fluidWaterClip);
+  }
+}
+
