@@ -11,6 +11,7 @@ import { EditProfileModal } from '@/components/profile/EditProfileModal';
 import { LevelUpModal } from '@/components/gamification/LevelUpModal';
 import { AuthScreen } from '@/components/auth/AuthScreen';
 import { HeroSection } from '@/components/landing/HeroSection';
+import InteractiveStoneBackground from '@/components/ui/interactive-stone-bg';
 import { Shield, RotateCw } from 'lucide-react';
 
 function AppContent() {
@@ -84,9 +85,12 @@ function AppContent() {
     );
   }
 
-  // 3. User Dashboard with Full Fantasy Frame and Torches
+  // 3. User Dashboard with Interactive Stone Wall & Magma Crevices
   return (
-    <div className="min-h-screen bg-[#0a0c12] text-[#f4ebd0] flex flex-col relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#07080b] text-[#f4ebd0] flex flex-col relative overflow-x-hidden">
+      {/* Interactive Stone Masonry Wall with Fire-Emitting Gaps */}
+      <InteractiveStoneBackground />
+
       {/* Top Navbar */}
       <Navbar
         onOpenCreate={() => setIsCreateOpen(true)}
@@ -98,24 +102,8 @@ function AppContent() {
         }}
       />
 
-      {/* Main Container with Wall Torches and Carved Wood Outer Frame */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-6 py-4 sm:py-6 relative">
-        {/* Left Animated Wall Torch */}
-        <div className="hidden xl:flex flex-col items-center absolute -left-12 top-24 pointer-events-none select-none z-20">
-          {/* Torch Flame Glow */}
-          <div className="w-10 h-14 rounded-full bg-gradient-to-t from-[#ef4444] via-[#f59e0b] to-[#fef08a] torch-glow blur-[1px]" />
-          {/* Torch Wall Sconce Mount */}
-          <div className="w-4 h-12 bg-gradient-to-b from-[#332014] to-[#140b06] border border-[#784f2b] rounded-sm -mt-2 shadow-xl" />
-        </div>
-
-        {/* Right Animated Wall Torch */}
-        <div className="hidden xl:flex flex-col items-center absolute -right-12 top-24 pointer-events-none select-none z-20">
-          {/* Torch Flame Glow */}
-          <div className="w-10 h-14 rounded-full bg-gradient-to-t from-[#ef4444] via-[#f59e0b] to-[#fef08a] torch-glow blur-[1px]" />
-          {/* Torch Wall Sconce Mount */}
-          <div className="w-4 h-12 bg-gradient-to-b from-[#332014] to-[#140b06] border border-[#784f2b] rounded-sm -mt-2 shadow-xl" />
-        </div>
-
+      {/* Main Container with Carved Wood Outer Frame */}
+      <main className="flex-1 max-w-7xl w-full mx-auto px-2 sm:px-4 lg:px-6 py-4 sm:py-6 relative z-10">
         {/* Heavy Carved Wood Outer Frame Structure */}
         <div className="relative rounded-3xl p-3 sm:p-5 rpg-wood-frame">
           {/* Left Wooden Pillar with Engraved Mystical Runes */}
