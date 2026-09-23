@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase/client';
 import { Shield, Sparkles, Mail, Lock, User, ArrowRight, Flame, Trophy, CheckCircle2, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import KineticGrid from '@/components/ui/kinetic-grid';
 
 interface AuthScreenProps {
   initialMode?: 'signin' | 'signup';
@@ -86,12 +87,13 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#07090e] text-[#f4ebd0] flex flex-col justify-center items-center p-4 sm:p-6 relative overflow-hidden font-cinzel">
-      {/* Background Flickering Torchlights */}
-      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#d97706]/15 rounded-full blur-3xl pointer-events-none torch-glow" />
-      <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-[#b45309]/15 rounded-full blur-3xl pointer-events-none torch-glow" />
+    <KineticGrid className="text-[#f4ebd0] font-cinzel">
+      <div className="min-h-screen w-full flex flex-col justify-center items-center p-4 sm:p-6 relative">
+        {/* Background Flickering Torchlights */}
+        <div className="absolute top-1/4 -left-20 w-80 h-80 bg-[#d97706]/10 rounded-full blur-3xl pointer-events-none torch-glow" />
+        <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-[#b45309]/10 rounded-full blur-3xl pointer-events-none torch-glow" />
 
-      {/* Main Container */}
+        {/* Main Container */}
       <motion.div
         initial={{ opacity: 0, y: 20, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -271,6 +273,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
           </div>
         )}
       </motion.div>
-    </div>
+      </div>
+    </KineticGrid>
   );
 };
