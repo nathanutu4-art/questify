@@ -10,9 +10,13 @@ CREATE TABLE IF NOT EXISTS public.profiles (
     level INTEGER NOT NULL DEFAULT 1,
     current_streak INTEGER NOT NULL DEFAULT 0,
     last_active_date DATE,
+    role TEXT NOT NULL DEFAULT 'user' CHECK (role IN ('user', 'admin')),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
+
+-- Migration query if profiles table already exists:
+ALTER TABLE public.profiles ADD COLUMN IF NOT EXISTS role TEXT NOT NULL DEFAULT 'user' CHECK (role IN ('user', 'admin'));
 
 -- 2. Categories table
 CREATE TABLE IF NOT EXISTS public.categories (
@@ -100,15 +104,30 @@ ALTER TABLE public.user_category_xp ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.badges ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.user_badges ENABLE ROW LEVEL SECURITY;
 
+-- Helper function to check if authenticated user is admin
+CREATE OR REPLACE FUNCTION public.is_admin()
+RETURNS BOOLEAN AS $$
+BEGIN
+    RETURN EXISTS (
+        SELECT 1 FROM public.profiles
+        WHERE id = auth.uid() AND role = 'admin'
+    );
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
 -- Policies for profiles
 CREATE POLICY "Public profiles are viewable by owner" ON public.profiles
     FOR SELECT USING (auth.uid() = id);
 CREATE POLICY "Users can update their own profile" ON public.profiles
     FOR UPDATE USING (auth.uid() = id);
+CREATE POLICY "Admins have full access to profiles" ON public.profiles
+    FOR ALL TO authenticated USING (public.is_admin());
 
 -- Policies for categories
 CREATE POLICY "Categories are readable by everyone authenticated" ON public.categories
     FOR SELECT TO authenticated USING (true);
+CREATE POLICY "Admins have full access to categories" ON public.categories
+    FOR ALL TO authenticated USING (public.is_admin());
 
 -- Policies for quests
 CREATE POLICY "Users can view their own quests" ON public.quests
@@ -119,22 +138,30 @@ CREATE POLICY "Users can update their own quests" ON public.quests
     FOR UPDATE USING (auth.uid() = user_id);
 CREATE POLICY "Users can delete their own quests" ON public.quests
     FOR DELETE USING (auth.uid() = user_id);
+CREATE POLICY "Admins have full access to quests" ON public.quests
+    FOR ALL TO authenticated USING (public.is_admin());
 
 -- Policies for user_category_xp
 CREATE POLICY "Users can view their own category xp" ON public.user_category_xp
     FOR SELECT USING (auth.uid() = user_id);
 CREATE POLICY "Users can modify their own category xp" ON public.user_category_xp
     FOR ALL USING (auth.uid() = user_id);
+CREATE POLICY "Admins have full access to user_category_xp" ON public.user_category_xp
+    FOR ALL TO authenticated USING (public.is_admin());
 
 -- Policies for badges
 CREATE POLICY "Badges are viewable by everyone" ON public.badges
     FOR SELECT TO authenticated USING (true);
+CREATE POLICY "Admins have full access to badges" ON public.badges
+    FOR ALL TO authenticated USING (public.is_admin());
 
 -- Policies for user_badges
 CREATE POLICY "Users can view their unlocked badges" ON public.user_badges
     FOR SELECT USING (auth.uid() = user_id);
 CREATE POLICY "Users can unlock their badges" ON public.user_badges
     FOR INSERT WITH CHECK (auth.uid() = user_id);
+CREATE POLICY "Admins have full access to user_badges" ON public.user_badges
+    FOR ALL TO authenticated USING (public.is_admin());
 
 -- Function & Trigger: Automatically create profile on auth signup
 CREATE OR REPLACE FUNCTION public.handle_new_user()

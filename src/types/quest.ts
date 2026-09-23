@@ -31,6 +31,7 @@ export interface UserProfile {
   level: number;
   current_streak: number;
   last_active_date?: string;
+  role?: 'user' | 'admin';
 }
 
 export interface Badge {

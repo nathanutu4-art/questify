@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { useQuest } from '@/lib/store/QuestContext';
 import { getLevelProgress } from '@/lib/utils';
-import { Shield, Swords, UserCog, LogOut, Scroll, User } from 'lucide-react';
+import { Shield, Swords, UserCog, LogOut, Scroll, User, ShieldAlert } from 'lucide-react';
 
 interface NavbarProps {
   onOpenCreate: () => void;
@@ -113,6 +114,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               {profile.username || 'Petualang'}
             </span>
           </div>
+
+          {/* Admin Panel Link */}
+          {(profile.role === 'admin' || !profile.role) && (
+            <Link
+              href="/admin"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 rounded-full text-xs font-bold text-amber-300 font-cinzel transition shadow-sm"
+              title="Buka Citadel Admin Refine"
+            >
+              <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
+              <span className="hidden md:inline">Admin</span>
+            </Link>
+          )}
 
           {/* Edit Profil Button - Pastel Slate Rounded-Full */}
           <button
