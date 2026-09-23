@@ -32,7 +32,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <div
       ref={containerRef}
-      className="min-h-screen w-full bg-[#000000] text-white flex flex-col justify-between relative overflow-hidden select-none font-sans cursor-none"
+      className="min-h-screen w-full bg-[#000000] text-white flex flex-col justify-between relative overflow-hidden select-none font-sans"
     >
       {/* ========================================================================= */}
       {/* LAYER 0: BASE BACKGROUND (BG1.jpeg / BG3.jpeg + stardust & night sky)     */}
