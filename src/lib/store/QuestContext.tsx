@@ -37,6 +37,7 @@ const DEFAULT_PROFILE: UserProfile = {
   level: 1,
   current_streak: 1,
   last_active_date: new Date().toISOString().split('T')[0],
+  role: 'user',
 };
 
 export function QuestProvider({ children }: { children: React.ReactNode }) {
@@ -82,6 +83,7 @@ export function QuestProvider({ children }: { children: React.ReactNode }) {
           level: profileData.level ?? 1,
           current_streak: profileData.current_streak ?? 1,
           last_active_date: profileData.last_active_date,
+          role: (profileData.role as 'user' | 'admin') || 'user',
         });
       } else {
         // Fallback: Create initial profile if trigger has not created it
@@ -94,6 +96,7 @@ export function QuestProvider({ children }: { children: React.ReactNode }) {
           current_streak: 1,
           avatar_url: '',
           last_active_date: new Date().toISOString().split('T')[0],
+          role: 'user' as const,
         };
 
         queryTimeout(supabase.from('profiles').upsert(newProfileRow), 2000).catch(() => {});

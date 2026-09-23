@@ -115,8 +115,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             </span>
           </div>
 
-          {/* Admin Panel Link */}
-          {(profile.role === 'admin' || !profile.role) && (
+          {/* Admin Panel Link - Hanya muncul jika role adalah admin */}
+          {profile?.role === 'admin' && (
             <Link
               href="/admin"
               className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 rounded-full text-xs font-bold text-amber-300 font-cinzel transition shadow-sm"
