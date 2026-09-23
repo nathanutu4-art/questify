@@ -165,7 +165,7 @@ function AppContent() {
       {/* Footer */}
       <footer className="border-t border-[#3d2719] py-3 text-center text-xs text-[#a37f59] font-cinzel">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>Questify &bull; Classic Fantasy Tabletop RPG</span>
+          <span>Misiku &bull; Classic Fantasy Tabletop RPG</span>
           <span className="text-[11px] text-[#785b39]">Parchment, Wood & Transmutation Arcana</span>
         </div>
       </footer>

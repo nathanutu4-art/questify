@@ -95,7 +95,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                 </div>
                 <h3 className="text-base font-bold text-[#fef08a]">Mode Demo Sedang Aktif</h3>
                 <p className="text-xs text-[#d4b996] leading-relaxed text-left bg-[#150d08] p-4 rounded-xl border border-[#543b23] font-serif">
-                  Questify saat ini berjalan menggunakan <strong className="text-[#facc15]">Local RPG Engine</strong> (semua quest, progress XP, level, dan badge tersimpan otomatis di browser Anda).
+                  Misiku saat ini berjalan menggunakan <strong className="text-[#facc15]">Local RPG Engine</strong> (semua quest, progress XP, level, dan badge tersimpan otomatis di browser Anda).
                   <br /><br />
                   Untuk mengaktifkan <strong className="text-[#34d399]">Supabase Cloud Sync</strong>:
                   <br />

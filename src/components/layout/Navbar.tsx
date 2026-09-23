@@ -30,13 +30,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Metallic Shield Crest Logo */}
             <div className="w-10 h-10 rounded-2xl bg-[#26201a] border-2 border-[#b89363] flex items-center justify-center shadow-sm relative">
               <Shield className="w-6 h-6 text-[#93c5fd] stroke-[1.8] fill-[#1e3a8a]/40" />
-              <span className="absolute text-[11px] font-black text-[#fae8b6] font-serif">ψ</span>
+              <span className="absolute text-[11px] font-black text-[#fae8b6] font-cinzel">M</span>
             </div>
 
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-xl font-bold tracking-wider text-[#fae8b6] font-cinzel">
-                  QUESTIFY
+                  MISIKU
                 </span>
               </div>
               <p className="text-[10px] text-[#c9b499] font-serif tracking-wide">

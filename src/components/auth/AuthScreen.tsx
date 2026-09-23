@@ -103,13 +103,14 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
         {/* Brand Header */}
         <div className="text-center mb-6">
           <div className="inline-flex w-16 h-16 rounded-2xl bg-gradient-to-b from-[#ca8a04] via-[#78350f] to-[#291205] p-0.5 shadow-2xl shadow-amber-600/30 mb-3">
-            <div className="w-full h-full bg-[#120c08] rounded-[14px] flex items-center justify-center">
+            <div className="w-full h-full bg-[#120c08] rounded-[14px] flex items-center justify-center relative">
               <Shield className="w-9 h-9 text-[#facc15]" />
+              <span className="absolute text-sm font-black text-[#fae8b6] font-cinzel">M</span>
             </div>
           </div>
           <div className="flex items-center justify-center gap-2">
             <h1 className="text-3xl sm:text-4xl font-black tracking-wider text-[#ffffff] drop-shadow-md">
-              QUESTIFY
+              MISIKU
             </h1>
           </div>
           <p className="text-xs text-[#cca981] mt-1.5 max-w-xs mx-auto leading-relaxed font-serif">

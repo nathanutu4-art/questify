@@ -126,7 +126,7 @@ const today = new Date().toISOString().split('T')[0];
 export const INITIAL_QUESTS: Quest[] = [
   {
     id: 'q1',
-    title: 'Selesaikan Desain UI Questify',
+    title: 'Selesaikan Desain UI Misiku',
     description: 'Rancang tampilan Dark Mode RPG dengan aksen neon untuk dashboard utama.',
     category_id: 'work',
     difficulty: 'HARD',

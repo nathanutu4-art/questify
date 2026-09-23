@@ -91,10 +91,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="flex items-center gap-10">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 rounded-xl bg-gradient-to-b from-[#4b5563] via-[#1f2937] to-[#111827] border-2 border-[#ca8a04] flex items-center justify-center shadow-lg relative">
-              <span className="text-sm font-black text-[#facc15] font-serif">ψ</span>
+              <span className="text-sm font-black text-[#facc15] font-serif">M</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="text-base font-black tracking-widest text-[#fef08a] font-cinzel">QUESTIFY</span>
+              <span className="text-base font-black tracking-widest text-[#fef08a] font-cinzel">MISIKU</span>
             </div>
           </div>
 
@@ -103,7 +103,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               Offerings
             </button>
             <button onClick={onStartAdventure} className="hover:text-[#fef08a] transition">
-              Why Questify
+              Why Misiku
             </button>
             <button onClick={onStartAdventure} className="hover:text-[#fef08a] transition">
               Skill Tree
@@ -158,22 +158,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="max-w-2xl mx-auto md:ml-auto md:mr-0 flex flex-col items-center md:items-end text-center md:text-right font-cinzel"
         >
-          {/* Headline: QUESTIFY in Soft Pastel Gold (Centered on mobile, right on desktop) */}
+          {/* Headline: MISIKU in Soft Pastel Gold (Centered on mobile, right on desktop) */}
           <div className="overflow-hidden">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-wider leading-none mb-4 text-[#fae8b6]">
-              QUESTIFY
+              MISIKU
             </h1>
           </div>
 
           {/* Supporting Headline: YOUR LEVELING UP ADVENTURE START HERE */}
           <div className="space-y-2 mb-8 flex flex-col items-center md:items-end">
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-[#fef3c7] tracking-wide leading-snug">
-              YOUR LEVELING UP ADVENTURE START HERE
+              Mulai Petualangan Level up mu disini
             </h2>
 
             {/* Description: CREATE QUEST AND GET IT DONE TO LEVEL UP YOUR SELF */}
             <p className="text-xs sm:text-sm font-medium text-[#d9c8af] tracking-widest uppercase max-w-lg leading-relaxed font-serif">
-              CREATE QUEST AND GET IT DONE TO LEVEL UP YOUR SELF
+              Buat misi dan selesaikan untuk mengupgrade dirimu!
             </p>
           </div>
 
@@ -184,7 +184,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               onClick={onStartAdventure}
               className="group w-full sm:w-auto px-7 py-3 rounded-full bg-[#b85d56] hover:bg-[#a64e48] border-2 border-[#e8a59e] text-[#fff7f5] text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 flex items-center justify-center gap-2.5 active:scale-95 shadow-sm"
             >
-              <span>START THE ADVENTURE</span>
+              <span>Mulai Petualangan</span>
               <ArrowRight className="w-4 h-4 text-[#fff7f5] group-hover:translate-x-1.5 transition-transform" />
             </button>
 
@@ -193,7 +193,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               onClick={onBeginQuest}
               className="group w-full sm:w-auto px-7 py-3 rounded-full bg-[#261f18]/90 hover:bg-[#362b21] border-2 border-[#d6ba8d] hover:border-[#fae8b6] text-[#fae8b6] text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 flex items-center justify-center gap-2.5 active:scale-95 backdrop-blur-md shadow-sm"
             >
-              <span>BEGIN YOUR QUEST</span>
+              <span>Mulai jalankan Misimu</span>
               <ArrowRight className="w-4 h-4 text-[#d6ba8d] group-hover:text-[#fae8b6] group-hover:translate-x-1.5 transition-transform" />
             </button>
           </div>
@@ -205,7 +205,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* ========================================================================= */}
       <footer className="relative z-20 w-full max-w-7xl mx-auto px-6 sm:px-12 py-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#a37f59] font-cinzel tracking-wider">
         <div className="flex items-center gap-2">
-          <span>&copy; {new Date().getFullYear()} QUESTIFY</span>
+          <span>&copy; {new Date().getFullYear()} MISIKU</span>
           <span>&bull;</span>
           <span>ALL RIGHTS RESERVED</span>
         </div>

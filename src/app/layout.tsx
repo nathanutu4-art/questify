@@ -25,7 +25,7 @@ const medieval = MedievalSharp({
 });
 
 export const metadata: Metadata = {
-  title: "Questify - RPG Task Management Platform",
+  title: "Misiku - RPG Task Management Platform",
   description: "Ubah rutinitas harianmu menjadi petualangan RPG yang menyenangkan dengan XP, Level, dan Trophy Room 3D.",
 };
 

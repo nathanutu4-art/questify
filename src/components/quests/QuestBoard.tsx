@@ -53,7 +53,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({ onOpenCreate }) => {
             Papan Petualangan Harian
           </h2>
           <p className="text-xs sm:text-sm text-[#543317] mt-1 font-serif italic max-w-lg mx-auto">
-            Selesaikan misimu, kumpulkan XP, dan tingkatkan status petualangmu di dunia Questify!
+            Selesaikan misimu, kumpulkan XP, dan tingkatkan status petualangmu di dunia Misiku!
           </p>
         </div>
       </div>
