@@ -169,10 +169,3 @@ header button {
   }
 }
 
-/* Fallback for browsers without CSS SVG mask-image support */
-@supports (not (mask-image: url(#fluidWaterMask))) and (not (-webkit-mask-image: url(#fluidWaterMask))) {
-  .hero-fluid-reveal {
-    clip-path: url(#fluidWaterClip);
-  }
-}
-
