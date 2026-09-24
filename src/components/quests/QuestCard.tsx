@@ -59,14 +59,14 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
       <div className="p-3.5 sm:p-4.5 flex items-center justify-between gap-3 sm:gap-4">
         {/* Left: Shield Checkbox + Quest Details */}
         <div className="flex items-center gap-3.5 flex-1 min-w-0">
-          {/* Shield Checkbox Button - Rounded-2xl */}
+          {/* Shield Checkbox Button - Apple Glass Rounded-2xl */}
           <button
             onClick={handleCheck}
             disabled={quest.is_completed || isCompleting}
-            className={`w-11 h-12 rounded-2xl flex items-center justify-center transition-all duration-300 shrink-0 relative group/btn ${
+            className={`w-11 h-12 rounded-2xl flex items-center justify-center shrink-0 relative group/btn ${
               quest.is_completed
-                ? 'bg-[#284e44] border-2 border-[#86efac] text-[#ffffff] shadow-sm'
-                : 'bg-[#2c221a] border-2 border-[#b89363] text-[#fae8b6] hover:border-[#fae8b6] hover:scale-105 active:scale-95 shadow-sm'
+                ? 'glass-btn-emerald text-[#ffffff]'
+                : 'glass-btn-secondary text-[#fae8b6]'
             }`}
             title={quest.is_completed ? 'Quest Selesai' : 'Klik untuk Selesaikan Quest'}
           >
@@ -146,13 +146,13 @@ export const QuestCard: React.FC<QuestCardProps> = ({ quest }) => {
             </span>
           </div>
 
-          {/* Delete Action */}
+          {/* Delete Action - Apple Frosted Icon Glass */}
           <button
             onClick={() => deleteQuest(quest.id)}
-            className="opacity-0 group-hover:opacity-100 p-1.5 text-[#a8825c] hover:text-[#ef4444] hover:bg-[#351e11] rounded-full transition"
+            className="glass-btn-icon opacity-0 group-hover:opacity-100 p-2 text-[#c4a07d] hover:text-[#f87171] rounded-full"
             title="Hapus Quest"
           >
-            <Trash2 className="w-4 h-4" />
+            <Trash2 className="w-3.5 h-3.5" />
           </button>
         </div>
       </div>

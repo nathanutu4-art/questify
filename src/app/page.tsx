@@ -6,6 +6,7 @@ import { Navbar } from '@/components/layout/Navbar';
 import { QuestBoard } from '@/components/quests/QuestBoard';
 import { PlayerStats } from '@/components/gamification/PlayerStats';
 import { CreateQuestModal } from '@/components/quests/CreateQuestModal';
+import { QuestBuilderModal } from '@/components/quests/QuestBuilderModal';
 import { TrophyRoomModal } from '@/components/trophy/TrophyRoomModal';
 import { EditProfileModal } from '@/components/profile/EditProfileModal';
 import { LevelUpModal } from '@/components/gamification/LevelUpModal';
@@ -17,6 +18,7 @@ import { Shield, RotateCw } from 'lucide-react';
 function AppContent() {
   const { user, isLoadingAuth, badges, signOut } = useQuest();
   const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [isQuestBuilderOpen, setIsQuestBuilderOpen] = useState(false);
   const [isTrophyOpen, setIsTrophyOpen] = useState(false);
   const [isEditProfileOpen, setIsEditProfileOpen] = useState(false);
 
@@ -132,7 +134,10 @@ function AppContent() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:px-6">
             {/* Left Column: Quest Board (8 cols) */}
             <section className="lg:col-span-8">
-              <QuestBoard onOpenCreate={() => setIsCreateOpen(true)} />
+              <QuestBoard 
+                onOpenCreate={() => setIsCreateOpen(true)} 
+                onOpenQuestBuilder={() => setIsQuestBuilderOpen(true)} 
+              />
             </section>
 
             {/* Right Column: Player Stats & Arcane Circle (4 cols) */}
@@ -159,7 +164,16 @@ function AppContent() {
       </footer>
 
       {/* Modals */}
-      <CreateQuestModal isOpen={isCreateOpen} onClose={() => setIsCreateOpen(false)} />
+      <CreateQuestModal 
+        isOpen={isCreateOpen} 
+        onClose={() => setIsCreateOpen(false)} 
+        onOpenQuestBuilder={() => setIsQuestBuilderOpen(true)}
+      />
+      <QuestBuilderModal 
+        isOpen={isQuestBuilderOpen} 
+        onClose={() => setIsQuestBuilderOpen(false)} 
+        onOpenCreateCustom={() => setIsCreateOpen(true)}
+      />
       <TrophyRoomModal isOpen={isTrophyOpen} onClose={() => setIsTrophyOpen(false)} badges={badges} />
       <EditProfileModal isOpen={isEditProfileOpen} onClose={() => setIsEditProfileOpen(false)} />
       <LevelUpModal />

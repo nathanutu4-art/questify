@@ -3,14 +3,15 @@
 import React, { useState } from 'react';
 import { useQuest } from '@/lib/store/QuestContext';
 import { QuestCard } from './QuestCard';
-import { Flame, Swords, Check, Plus, ShieldAlert } from 'lucide-react';
+import { Flame, Swords, Check, Plus, ShieldAlert, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface QuestBoardProps {
   onOpenCreate: () => void;
+  onOpenQuestBuilder?: () => void;
 }
 
-export const QuestBoard: React.FC<QuestBoardProps> = ({ onOpenCreate }) => {
+export const QuestBoard: React.FC<QuestBoardProps> = ({ onOpenCreate, onOpenQuestBuilder }) => {
   const { quests, categories } = useQuest();
   const [filterTab, setFilterTab] = useState<'daily' | 'all' | 'completed'>('daily');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -41,7 +42,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({ onOpenCreate }) => {
   return (
     <div className="relative rounded-3xl p-5 sm:p-7 rpg-parchment overflow-hidden border-4 border-[#855e24] shadow-2xl">
       {/* 1. Curled Parchment Scroll Header Banner */}
-      <div className="relative mb-6 text-center">
+      <div className="relative mb-5 text-center">
         {/* Scroll Outer Frame with Rolled Handles - Pastel Parchment */}
         <div className="relative inline-block w-full max-w-2xl bg-[#f5e8d0] border-2 border-[#b89363] rounded-2xl px-6 py-4 shadow-sm">
           {/* Left Scroll Rod */}
@@ -58,64 +59,93 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({ onOpenCreate }) => {
         </div>
       </div>
 
-      {/* 2. Medieval Beveled Filter Tabs - Rounded-Full with Pastel Colors */}
-      <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-5">
-        {/* Tab Misi Harian */}
-        <button
-          onClick={() => setFilterTab('daily')}
-          className={`px-5 py-2.5 rounded-full border-2 transition-all font-cinzel text-xs sm:text-sm font-bold flex items-center gap-2 shadow-sm ${
-            filterTab === 'daily'
-              ? 'bg-[#334155] border-[#d6ba8d] text-[#fae8b6]'
-              : 'bg-[#1e293b] border-[#334155] text-[#94a3b8] hover:text-[#e2e8f0]'
-          }`}
-        >
-          <Flame className="w-4 h-4 text-orange-400" />
-          <span>Misi Harian</span>
-          {dailyCount > 0 && (
-            <span className="px-2 py-0.5 rounded-full text-[10px] bg-[#271d15] text-[#fae8b6] border border-[#a68252]">
-              {dailyCount}
-            </span>
+      {/* Quick Action Bar: Quest Builder & Create Quest */}
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-5 px-1">
+        <div className="text-xs text-[#543317] font-serif font-bold">
+          {filteredQuests.length} Misi Tersedia
+        </div>
+        <div className="flex items-center gap-2">
+          {onOpenQuestBuilder && (
+            <button
+              type="button"
+              onClick={onOpenQuestBuilder}
+              className="glass-btn-gold px-4 py-2 rounded-full text-xs font-black font-cinzel inline-flex items-center gap-1.5 shadow-md hover:scale-[1.02] transition"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-amber-200" />
+              <span>Quest Builder ✦</span>
+            </button>
           )}
-        </button>
-
-        {/* Tab Semua Quest */}
-        <button
-          onClick={() => setFilterTab('all')}
-          className={`px-5 py-2.5 rounded-full border-2 transition-all font-cinzel text-xs sm:text-sm font-bold flex items-center gap-2 shadow-sm ${
-            filterTab === 'all'
-              ? 'bg-[#334155] border-[#d6ba8d] text-[#fae8b6]'
-              : 'bg-[#1e293b] border-[#334155] text-[#94a3b8] hover:text-[#e2e8f0]'
-          }`}
-        >
-          <Swords className="w-4 h-4 text-[#e8c872]" />
-          <span>Semua Quest</span>
-        </button>
-
-        {/* Tab Selesai - Soft Pastel Sage/Forest Rounded-Full */}
-        <button
-          onClick={() => setFilterTab('completed')}
-          className={`px-6 py-2 rounded-full border-2 transition-all font-cinzel text-xs sm:text-sm font-bold flex items-center gap-2.5 shadow-sm ${
-            filterTab === 'completed'
-              ? 'bg-[#284e44] border-[#d6ba8d] text-[#ffffff]'
-              : 'bg-[#1a3830] border-[#2d5c50] text-[#a7d1c6] hover:border-[#387667]'
-          }`}
-        >
-          {/* Pastel Ruby Wax Seal Circle */}
-          <div className="w-5 h-5 rounded-full bg-[#b85d56] border-2 border-[#fae8b6] flex items-center justify-center shadow-sm">
-            <Check className="w-3 h-3 text-white stroke-[3.5]" />
-          </div>
-          <span>Selesai</span>
-        </button>
+          <button
+            type="button"
+            onClick={onOpenCreate}
+            className="glass-btn-primary px-4 py-2 rounded-full text-xs font-bold font-cinzel inline-flex items-center gap-1.5 shadow-md hover:scale-[1.02] transition"
+          >
+            <Plus className="w-3.5 h-3.5 text-white" />
+            <span>Tulis Misi</span>
+          </button>
+        </div>
       </div>
 
-      {/* 3. Category Filter Pills with Pastel Colors */}
+      {/* 2. Apple Segmented Glass Filter Tabs */}
+      <div className="flex justify-center mb-5">
+        <div className="p-1.5 rounded-full bg-[#140f0b]/80 border border-[#b89363]/40 backdrop-blur-md shadow-md inline-flex flex-wrap items-center justify-center gap-1.5 sm:gap-2">
+          {/* Tab Misi Harian */}
+          <button
+            onClick={() => setFilterTab('daily')}
+            className={`px-4 sm:px-5 py-2 rounded-full transition-all font-cinzel text-xs sm:text-sm font-bold flex items-center gap-2 ${
+              filterTab === 'daily'
+                ? 'glass-btn-secondary text-[#fae8b6]'
+                : 'text-[#cca981] hover:text-[#fae8b6] hover:bg-white/5'
+            }`}
+          >
+            <Flame className="w-4 h-4 text-orange-400" />
+            <span>Misi Harian</span>
+            {dailyCount > 0 && (
+              <span className="px-2 py-0.5 rounded-full text-[10px] bg-[#271d15]/90 text-[#fae8b6] border border-[#a68252]/60 shadow-inner">
+                {dailyCount}
+              </span>
+            )}
+          </button>
+
+          {/* Tab Semua Quest */}
+          <button
+            onClick={() => setFilterTab('all')}
+            className={`px-4 sm:px-5 py-2 rounded-full transition-all font-cinzel text-xs sm:text-sm font-bold flex items-center gap-2 ${
+              filterTab === 'all'
+                ? 'glass-btn-secondary text-[#fae8b6]'
+                : 'text-[#cca981] hover:text-[#fae8b6] hover:bg-white/5'
+            }`}
+          >
+            <Swords className="w-4 h-4 text-[#e8c872]" />
+            <span>Semua Quest</span>
+          </button>
+
+          {/* Tab Selesai - Apple Emerald Liquid Glass */}
+          <button
+            onClick={() => setFilterTab('completed')}
+            className={`px-4 sm:px-5 py-2 rounded-full transition-all font-cinzel text-xs sm:text-sm font-bold flex items-center gap-2 ${
+              filterTab === 'completed'
+                ? 'glass-btn-emerald text-[#ffffff]'
+                : 'text-[#a7d1c6] hover:text-white hover:bg-white/5'
+            }`}
+          >
+            {/* Apple Ruby Wax Seal Circle */}
+            <div className="w-4 h-4 rounded-full bg-[#b85d56] border border-[#fae8b6] flex items-center justify-center shadow-sm">
+              <Check className="w-2.5 h-2.5 text-white stroke-[3.5]" />
+            </div>
+            <span>Selesai</span>
+          </button>
+        </div>
+      </div>
+
+      {/* 3. Category Filter Pills - Apple Frosted Glass Pills */}
       <div className="flex items-center justify-center gap-2 sm:gap-2.5 flex-wrap mb-6">
         <button
           onClick={() => setSelectedCategory(null)}
-          className={`px-3.5 py-1.5 rounded-full border text-xs font-bold font-cinzel transition-all ${
+          className={`px-3.5 py-1.5 rounded-full text-xs font-bold font-cinzel transition-all ${
             selectedCategory === null
-              ? 'bg-[#3b2d21] border-[#d6ba8d] text-[#fae8b6] shadow-sm'
-              : 'bg-[#241c14] border-[#4d3827] text-[#c9b499] hover:border-[#855e24]'
+              ? 'glass-pill-active'
+              : 'glass-pill text-[#cca981]'
           }`}
         >
           Semua Kategori
@@ -127,10 +157,10 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({ onOpenCreate }) => {
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(isSelected ? null : cat.id)}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border text-xs font-bold font-cinzel transition-all ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold font-cinzel transition-all ${
                 isSelected
-                  ? 'bg-[#3b2d21] border-[#d6ba8d] text-[#fae8b6] shadow-sm'
-                  : 'bg-[#241c14] border-[#4d3827] text-[#c9b499] hover:border-[#855e24]'
+                  ? 'glass-pill-active'
+                  : 'glass-pill text-[#cca981]'
               }`}
             >
               {/* Gemstone Orb */}
@@ -138,6 +168,7 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({ onOpenCreate }) => {
                 className="w-2.5 h-2.5 rounded-full shadow-sm"
                 style={{
                   backgroundColor: cat.color,
+                  boxShadow: `0 0 6px ${cat.color}80`
                 }}
               />
               <span>{cat.name}</span>
@@ -166,13 +197,26 @@ export const QuestBoard: React.FC<QuestBoardProps> = ({ onOpenCreate }) => {
                   ? 'Semua misi harian Anda telah tuntas atau belum ditambahkan hari ini!'
                   : 'Belum ada quest pada kategori atau filter ini.'}
               </p>
-              <button
-                onClick={onOpenCreate}
-                className="px-4 py-2 bg-[#2d1b10] hover:bg-[#3d2719] text-[#fef08a] text-xs font-bold rounded-xl border-2 border-[#ca8a04] font-cinzel transition inline-flex items-center gap-2 shadow-md"
-              >
-                <Plus className="w-4 h-4" />
-                Tambah Quest Baru
-              </button>
+              <div className="flex flex-wrap items-center justify-center gap-2.5">
+                {onOpenQuestBuilder && (
+                  <button
+                    type="button"
+                    onClick={onOpenQuestBuilder}
+                    className="glass-btn-gold px-5 py-2.5 rounded-full text-xs font-black font-cinzel inline-flex items-center gap-2 shadow-md hover:scale-[1.02] transition"
+                  >
+                    <Sparkles className="w-4 h-4 text-amber-200" />
+                    <span>Buka Quest Builder ✦</span>
+                  </button>
+                )}
+                <button
+                  type="button"
+                  onClick={onOpenCreate}
+                  className="glass-btn-primary px-5 py-2.5 rounded-full text-xs font-bold font-cinzel inline-flex items-center gap-2"
+                >
+                  <Plus className="w-4 h-4" />
+                  <span>Tulis Quest Manual</span>
+                </button>
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

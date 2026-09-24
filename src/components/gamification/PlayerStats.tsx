@@ -109,11 +109,11 @@ export const PlayerStats: React.FC<PlayerStatsProps> = ({ onOpenTrophyRoom }) =>
         })}
       </div>
 
-      {/* 3D Trophy Room Entry - Rounded-Full with Pastel Colors */}
+      {/* 3D Trophy Room Entry - Apple Golden Liquid Glass */}
       <div className="mt-5 pt-3 border-t border-[#3b4c65]/80 px-2">
         <button
           onClick={onOpenTrophyRoom}
-          className="w-full py-2.5 px-4 bg-[#33251a] hover:bg-[#423022] border-2 border-[#b89563] hover:border-[#fae8b6] rounded-full text-xs font-bold text-[#fae8b6] uppercase tracking-wider font-cinzel flex items-center justify-center gap-2 shadow-sm transition active:scale-95 group"
+          className="glass-btn-gold w-full py-2.5 px-4 rounded-full text-xs font-bold uppercase tracking-wider font-cinzel flex items-center justify-center gap-2 group"
         >
           <Trophy className="w-4 h-4 text-[#e8c872] group-hover:scale-110 transition-transform" />
           <span>Buka Trophy Room 3D</span>

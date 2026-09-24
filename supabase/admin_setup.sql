@@ -111,3 +111,4 @@ WHERE id IN (
 -- Jalankan query ini untuk memastikan role admin sudah aktif:
 -- SELECT id, username, role, level, total_xp FROM public.profiles;
 -- ==============================================================================
+

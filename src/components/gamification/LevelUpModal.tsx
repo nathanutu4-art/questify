@@ -32,10 +32,10 @@ export const LevelUpModal: React.FC = () => {
           exit={{ opacity: 0, scale: 0.8, y: 30 }}
           className="relative w-full max-w-md bg-gradient-to-b from-[#2a1b11] via-[#1f130b] to-[#140b06] border-4 border-[#ca8a04] rounded-3xl p-6 shadow-2xl text-center overflow-hidden font-cinzel text-[#f5ebd0]"
         >
-          {/* Close button */}
+          {/* Close button - Apple Frosted Icon Glass */}
           <button
             onClick={handleClose}
-            className="absolute top-4 right-4 p-2 text-[#cca981] hover:text-white rounded-full bg-[#170e08] border border-[#543b23] transition"
+            className="glass-btn-icon absolute top-4 right-4 p-2 text-[#cca981] hover:text-white rounded-full"
           >
             <X className="w-5 h-5" />
           </button>
@@ -101,11 +101,11 @@ export const LevelUpModal: React.FC = () => {
             </div>
           )}
 
-          {/* Claim / Continue Button */}
+          {/* Claim / Continue Button - Apple Ruby Liquid Glass */}
           <div className="pt-5">
             <button
               onClick={handleClose}
-              className="w-full py-3 rpg-wax-seal rounded-xl text-xs font-black uppercase tracking-wider transition hover:scale-105 active:scale-95 text-white"
+              className="glass-btn-primary w-full py-3.5 rounded-full text-xs font-black uppercase tracking-wider text-white"
             >
               Lanjutkan Petualangan
             </button>

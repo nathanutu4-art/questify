@@ -108,7 +108,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onCl
             </div>
             <button
               onClick={onClose}
-              className="p-1.5 text-[#a8825c] hover:text-white rounded-lg hover:bg-[#351e11] transition"
+              className="glass-btn-icon p-1.5 rounded-full text-[#cca981] hover:text-white"
             >
               <X className="w-5 h-5" />
             </button>
@@ -160,7 +160,7 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onCl
               />
             </div>
 
-            {/* Avatar Presets */}
+            {/* Avatar Presets - Apple Glass Avatar Selectors */}
             <div>
               <label className="block text-xs font-bold text-[#fde047] uppercase tracking-wider mb-1.5">
                 Pilih Preset Avatar RPG
@@ -173,10 +173,10 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onCl
                       key={preset.id}
                       type="button"
                       onClick={() => setAvatarUrl(preset.url)}
-                      className={`relative rounded-xl overflow-hidden aspect-square border-2 transition-all p-0.5 ${
+                      className={`relative rounded-xl overflow-hidden aspect-square border transition-all p-0.5 ${
                         isSelected
-                          ? 'border-[#facc15] scale-105 shadow-md shadow-amber-500/40'
-                          : 'border-[#4a311e] hover:border-[#855e24] bg-[#120b07]'
+                          ? 'glass-btn-gold border-amber-400 scale-105 shadow-md shadow-amber-500/40'
+                          : 'glass-pill border-white/10 hover:border-amber-400/50'
                       }`}
                       title={preset.name}
                     >
@@ -210,19 +210,19 @@ export const EditProfileModal: React.FC<EditProfileModalProps> = ({ isOpen, onCl
               </div>
             </div>
 
-            {/* Action Buttons */}
+            {/* Action Buttons - Apple Glass Actions */}
             <div className="pt-3 flex items-center justify-end gap-3 border-t-2 border-[#452b17]">
               <button
                 type="button"
                 onClick={onClose}
-                className="px-5 py-2 rounded-full text-xs font-bold text-[#c4aa87] hover:text-white transition"
+                className="glass-btn-secondary px-5 py-2 rounded-full text-xs font-bold text-[#c4aa87] hover:text-white"
               >
                 Batal
               </button>
               <button
                 type="submit"
                 disabled={isSaving || !username.trim()}
-                className="px-6 py-2.5 bg-[#b85d56] hover:bg-[#a64e48] border-2 border-[#e8a59e] text-[#fff7f5] rounded-full text-xs font-bold uppercase tracking-wider transition hover:scale-105 active:scale-95 flex items-center gap-2 disabled:opacity-50 shadow-sm"
+                className="glass-btn-primary px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 disabled:opacity-50"
               >
                 {savedSuccess ? (
                   <>

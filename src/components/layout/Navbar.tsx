@@ -88,14 +88,15 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Right: Medieval Player Plate & Action Buttons */}
         <div className="flex items-center gap-2 sm:gap-3 w-full md:w-auto justify-end">
-          {/* Pastel Player Plate */}
+          {/* Pastel Player Plate - Apple Frosted Glass */}
           <div
             onClick={onOpenTrophyRoom}
-            className="flex items-center gap-2 bg-[#f5e8d0] border border-[#b89363] rounded-full px-3 py-1 shadow-sm cursor-pointer hover:bg-[#faebd7] transition"
+            className="flex items-center gap-2 bg-[#f5e8d0]/90 backdrop-blur-md border border-[#b89363]/80 rounded-full px-3 py-1 shadow-md cursor-pointer hover:bg-[#faebd7] hover:border-[#d6ba8d] transition-all duration-200 active:scale-95"
+            style={{
+              boxShadow: 'inset 0 1px 1px rgba(255,255,255,0.6), 0 3px 10px rgba(0,0,0,0.18)'
+            }}
             title="Klik untuk membuka Trophy Room 3D"
           >
-          
-
             {/* Avatar Frame */}
             <div className="w-5 h-5 rounded-full bg-[#1f2937] border border-[#875d27] overflow-hidden flex items-center justify-center">
               {profile.avatar_url ? (
@@ -115,40 +116,40 @@ export const Navbar: React.FC<NavbarProps> = ({
             </span>
           </div>
 
-          {/* Admin Panel Link - Hanya muncul jika role adalah admin */}
+          {/* Admin Panel Link - Apple Golden Liquid Glass */}
           {profile?.role === 'admin' && (
             <Link
               href="/admin"
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-500/15 hover:bg-amber-500/25 border border-amber-500/40 rounded-full text-xs font-bold text-amber-300 font-cinzel transition shadow-sm"
+              className="glass-btn-gold flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold font-cinzel"
               title="Buka Citadel Admin Refine"
             >
-              <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />
+              <ShieldAlert className="w-3.5 h-3.5 text-amber-300" />
               <span className="hidden md:inline">Admin</span>
             </Link>
           )}
 
-          {/* Edit Profil Button - Pastel Slate Rounded-Full */}
+          {/* Edit Profil Button - Apple Obsidian Glass */}
           <button
             onClick={onOpenEditProfile}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#25323a] hover:bg-[#30414b] border border-[#5a7682] rounded-full text-xs font-bold text-[#c7dee3] font-cinzel transition shadow-sm"
+            className="glass-btn-secondary flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#c7dee3] font-cinzel"
             title="Edit Profil Petualang"
           >
             <UserCog className="w-3.5 h-3.5 text-[#88a8b3]" />
             <span className="hidden sm:inline">Edit Profil</span>
           </button>
 
-          {/* Buat Quest Button - Pastel Terracotta Rounded-Full */}
+          {/* Buat Quest Button - Apple Ruby Liquid Glass */}
           <button
             onClick={onOpenCreate}
-            className="flex items-center gap-2 px-4 py-1.5 bg-[#b85d56] hover:bg-[#a64e48] border-2 border-[#e8a59e] rounded-full text-xs font-bold text-[#fff7f5] font-cinzel transition hover:scale-105 active:scale-95 shadow-sm"
+            className="glass-btn-primary flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold font-cinzel"
           >
-            <div className="w-3.5 h-3.5 rounded-full bg-[#752a25] flex items-center justify-center border border-[#e8a59e]">
+            <div className="w-3.5 h-3.5 rounded-full bg-[#752a25]/90 flex items-center justify-center border border-[#fca5a5]/60 shadow-inner">
               <Swords className="w-2 h-2 text-white" />
             </div>
             <span>Buat Quest</span>
           </button>
 
-          {/* Logout Button */}
+          {/* Logout Button - Apple Frosted Icon Glass */}
           <button
             onClick={() => {
               if (onSignOut) {
@@ -157,7 +158,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 signOut();
               }
             }}
-            className="p-1.5 text-[#a8825c] hover:text-[#ef4444] hover:bg-[#351e11] rounded-full transition"
+            className="glass-btn-icon p-1.5 rounded-full text-[#c4a07d] hover:text-[#f87171]"
             title="Keluar (Logout)"
           >
             <LogOut className="w-4 h-4" />

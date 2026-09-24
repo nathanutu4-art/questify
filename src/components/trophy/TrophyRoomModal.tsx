@@ -46,7 +46,7 @@ export const TrophyRoomModal: React.FC<TrophyRoomModalProps> = ({ isOpen, onClos
             </div>
             <button
               onClick={onClose}
-              className="p-2 text-[#a8825c] hover:text-white rounded-lg hover:bg-[#351e11] transition"
+              className="glass-btn-icon p-2 text-[#cca981] hover:text-white rounded-full"
             >
               <X className="w-5 h-5" />
             </button>
@@ -110,12 +110,12 @@ export const TrophyRoomModal: React.FC<TrophyRoomModalProps> = ({ isOpen, onClos
                     <button
                       key={badge.id}
                       onClick={() => setSelectedBadge(badge)}
-                      className={`p-3 rounded-xl border-2 text-left transition-all relative flex items-center gap-2.5 ${
+                      className={`p-3 rounded-xl border text-left transition-all relative flex items-center gap-2.5 ${
                         isSelected
-                          ? 'border-[#facc15] bg-[#3a2516] shadow-md'
+                          ? 'glass-btn-gold border-amber-400'
                           : badge.is_unlocked
-                          ? 'border-[#5a3a22] bg-[#24170e] hover:border-[#855e24]'
-                          : 'border-[#382111] bg-[#140b06] opacity-60 hover:opacity-85'
+                          ? 'glass-btn-secondary border-[#b89563]/40'
+                          : 'glass-pill border-white/10 opacity-60 hover:opacity-85'
                       }`}
                     >
                       <div

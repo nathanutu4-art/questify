@@ -35,6 +35,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const navItems = [
     { name: "Ringkasan", href: "/admin", icon: LayoutDashboard },
     { name: "Kelola Quests", href: "/admin/quests", icon: Scroll },
+    { name: "Rekomendasi Quests", href: "/admin/suggestions", icon: Sparkles },
     { name: "Petualang (Users)", href: "/admin/users", icon: Users },
     { name: "Kategori Misi", href: "/admin/categories", icon: FolderTree },
     { name: "Lencana & Trofi", href: "/admin/badges", icon: Award },
@@ -100,7 +101,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               </p>
               <button
                 onClick={toggleDemoAdmin}
-                className="w-full py-2 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-500 hover:to-amber-600 text-white rounded-lg font-bold text-xs transition active:scale-95 shadow"
+                className="glass-btn-gold w-full py-2.5 rounded-xl font-bold text-xs"
               >
                 Aktifkan Role Admin (Demo Simulation)
               </button>
@@ -116,7 +117,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
           <Link
             href="/"
-            className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-full bg-[#2a1d14] hover:bg-[#3d2a1d] border border-[#785b3b] text-xs font-bold text-[#fae8b6] tracking-wider transition"
+            className="glass-btn-secondary w-full inline-flex items-center justify-center gap-2 py-3 rounded-full text-xs font-bold text-[#fae8b6] tracking-wider"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Kembali ke Beranda Misiku</span>
@@ -207,7 +208,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           <div className="flex items-center gap-3 lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg bg-[#1a1f2c] border border-[#2d3748] text-slate-300 hover:text-white"
+              className="glass-btn-icon p-2 rounded-xl text-slate-300 hover:text-white"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -240,7 +241,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
             <Link
               href="/"
-              className="p-2 rounded-full bg-[#181d2a] hover:bg-[#232a3d] border border-[#2d3748] text-slate-400 hover:text-red-300 transition"
+              className="glass-btn-icon p-2 rounded-full text-slate-400 hover:text-red-300"
               title="Keluar ke Dunia Utama"
             >
               <LogOut className="w-4 h-4" />

@@ -1,8 +1,8 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState, useMemo, useCallback } from 'react';
-import { Quest, Category, Badge, UserProfile, UserCategoryXP } from '@/types/quest';
-import { INITIAL_CATEGORIES, INITIAL_BADGES } from '@/lib/data/initialData';
+import { Quest, Category, Badge, UserProfile, UserCategoryXP, QuestSuggestion } from '@/types/quest';
+import { INITIAL_CATEGORIES, INITIAL_BADGES, INITIAL_SUGGESTIONS } from '@/lib/data/initialData';
 import { supabase, isSupabaseConfigured } from '@/lib/supabase/client';
 import { User } from '@supabase/supabase-js';
 import confetti from 'canvas-confetti';
@@ -13,10 +13,15 @@ interface QuestContextType {
   quests: Quest[];
   categories: Category[];
   badges: Badge[];
+  suggestions: QuestSuggestion[];
+  isLoadingSuggestions: boolean;
   profile: UserProfile;
   categoryXPList: UserCategoryXP[];
   isConfigured: boolean;
   addQuest: (quest: Omit<Quest, 'id' | 'is_completed' | 'created_at'>) => Promise<void>;
+  addQuestFromSuggestion: (suggestion: QuestSuggestion, dueDate?: string) => Promise<void>;
+  addMultipleQuestsFromSuggestions: (suggestions: QuestSuggestion[], dueDate?: string) => Promise<number>;
+  reloadSuggestions: () => Promise<void>;
   completeQuest: (id: string) => Promise<{ xpGained: number; newBadges: Badge[]; levelUp: boolean }>;
   deleteQuest: (id: string) => Promise<void>;
   updateProfile: (data: { username: string; avatar_url: string }) => Promise<void>;
@@ -46,9 +51,55 @@ export function QuestProvider({ children }: { children: React.ReactNode }) {
   const [quests, setQuests] = useState<Quest[]>([]);
   const [categories] = useState<Category[]>(INITIAL_CATEGORIES);
   const [badges, setBadges] = useState<Badge[]>(INITIAL_BADGES);
+  const [suggestions, setSuggestions] = useState<QuestSuggestion[]>(INITIAL_SUGGESTIONS);
+  const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
   const [profile, setProfile] = useState<UserProfile>(DEFAULT_PROFILE);
   const [recentUnlockedBadge, setRecentUnlockedBadge] = useState<Badge | null>(null);
   const [levelUpNotification, setLevelUpNotification] = useState<{ oldLevel: number; newLevel: number } | null>(null);
+
+  // Load daily quest suggestions from Supabase (fallback to INITIAL_SUGGESTIONS)
+  const loadSuggestions = useCallback(async () => {
+    setIsLoadingSuggestions(true);
+    if (!isSupabaseConfigured || !supabase) {
+      setSuggestions(INITIAL_SUGGESTIONS);
+      setIsLoadingSuggestions(false);
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase
+        .from('daily_quest_suggestions')
+        .select('*')
+        .eq('is_active', true)
+        .order('created_at', { ascending: true });
+
+      if (!error && data && data.length > 0) {
+        const mapped: QuestSuggestion[] = data.map((item: any) => ({
+          id: item.id,
+          title: item.title,
+          description: item.description || '',
+          category_id: item.category_id,
+          difficulty: item.difficulty,
+          base_xp: item.base_xp,
+          tags: item.tags || [],
+          is_active: item.is_active,
+          category: categories.find((c) => c.id === item.category_id),
+        }));
+        setSuggestions(mapped);
+      } else {
+        setSuggestions(INITIAL_SUGGESTIONS);
+      }
+    } catch (err) {
+      console.warn('Error loading suggestions from Supabase:', err);
+      setSuggestions(INITIAL_SUGGESTIONS);
+    } finally {
+      setIsLoadingSuggestions(false);
+    }
+  }, [categories]);
+
+  useEffect(() => {
+    loadSuggestions();
+  }, [loadSuggestions]);
 
   // Load user data strictly for the logged-in user
   const loadUserData = useCallback(async (currentUser: User) => {
@@ -237,17 +288,15 @@ export function QuestProvider({ children }: { children: React.ReactNode }) {
     });
   }, [quests, categories]);
 
-  // Add a new quest for the active user
+  // Add a new quest for the active user (with optimistic update and demo support)
   const addQuest = async (questData: Omit<Quest, 'id' | 'is_completed' | 'created_at'>) => {
-    if (!user || !supabase) return;
-
     const category = categories.find((c) => c.id === questData.category_id);
-    const tempId = 'temp-' + Date.now();
+    const tempId = 'temp-' + Date.now() + '-' + Math.random().toString(36).substring(2, 6);
 
     const localQuest: Quest = {
       ...questData,
       id: tempId,
-      user_id: user.id,
+      user_id: user?.id || 'demo-user',
       is_completed: false,
       created_at: new Date().toISOString(),
       category,
@@ -255,6 +304,8 @@ export function QuestProvider({ children }: { children: React.ReactNode }) {
 
     // Optimistic UI update
     setQuests((prev) => [localQuest, ...prev]);
+
+    if (!user || !supabase) return;
 
     try {
       const { data, error } = await supabase
@@ -282,6 +333,45 @@ export function QuestProvider({ children }: { children: React.ReactNode }) {
     } catch (err) {
       console.error('Failed to insert quest in Supabase:', err);
     }
+  };
+
+  // Add a single quest from a suggestion template
+  const addQuestFromSuggestion = async (suggestion: QuestSuggestion, dueDate?: string) => {
+    const targetDate = dueDate || new Date().toISOString().split('T')[0];
+    await addQuest({
+      title: suggestion.title,
+      description: suggestion.description || '',
+      category_id: suggestion.category_id,
+      difficulty: suggestion.difficulty,
+      base_xp: suggestion.base_xp,
+      due_date: targetDate,
+    });
+  };
+
+  // Add multiple quests in batch from suggestions
+  const addMultipleQuestsFromSuggestions = async (
+    suggestionsList: QuestSuggestion[],
+    dueDate?: string
+  ): Promise<number> => {
+    const targetDate = dueDate || new Date().toISOString().split('T')[0];
+    let count = 0;
+    for (const sug of suggestionsList) {
+      await addQuest({
+        title: sug.title,
+        description: sug.description || '',
+        category_id: sug.category_id,
+        difficulty: sug.difficulty,
+        base_xp: sug.base_xp,
+        due_date: targetDate,
+      });
+      count++;
+    }
+    return count;
+  };
+
+  // Reload suggestions from Supabase (for admin sync or user refresh)
+  const reloadSuggestions = async () => {
+    await loadSuggestions();
   };
 
   // Complete a quest and update final XP to user profile in Supabase
@@ -473,10 +563,15 @@ export function QuestProvider({ children }: { children: React.ReactNode }) {
         quests,
         categories,
         badges,
+        suggestions,
+        isLoadingSuggestions,
         profile,
         categoryXPList,
         isConfigured: isSupabaseConfigured,
         addQuest,
+        addQuestFromSuggestion,
+        addMultipleQuestsFromSuggestions,
+        reloadSuggestions,
         completeQuest,
         deleteQuest,
         updateProfile,

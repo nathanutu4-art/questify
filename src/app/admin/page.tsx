@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase/client";
-import { INITIAL_QUESTS, INITIAL_CATEGORIES, INITIAL_BADGES } from "@/lib/data/initialData";
+import { INITIAL_QUESTS, INITIAL_CATEGORIES, INITIAL_BADGES, INITIAL_SUGGESTIONS } from "@/lib/data/initialData";
 import { 
   Scroll, 
   Users, 
@@ -26,6 +26,7 @@ export default function AdminDashboardPage() {
     adminUsers: 1,
     totalCategories: INITIAL_CATEGORIES.length,
     totalBadges: INITIAL_BADGES.length,
+    totalSuggestions: INITIAL_SUGGESTIONS.length,
   });
   const [recentQuests, setRecentQuests] = useState<any[]>(INITIAL_QUESTS);
   const [loading, setLoading] = useState(true);
@@ -58,6 +59,11 @@ export default function AdminDashboardPage() {
           .from("badges")
           .select("*", { count: "exact", head: true });
 
+        // 5. Fetch Daily Quest Suggestions count
+        const { count: suggestionsCount } = await supabase
+          .from("daily_quest_suggestions")
+          .select("*", { count: "exact", head: true });
+
         const quests = questsData || [];
         const profiles = profilesData || [];
         const completed = quests.filter(q => q.is_completed).length;
@@ -70,6 +76,7 @@ export default function AdminDashboardPage() {
           adminUsers: admins || 1,
           totalCategories: categoriesCount || INITIAL_CATEGORIES.length,
           totalBadges: badgesCount || INITIAL_BADGES.length,
+          totalSuggestions: suggestionsCount || INITIAL_SUGGESTIONS.length,
         });
 
         if (quests.length > 0) {
@@ -126,6 +133,16 @@ export default function AdminDashboardPage() {
       iconColor: "text-purple-400",
       href: "/admin/badges",
     },
+    {
+      title: "Rekomendasi Quests",
+      value: stats.totalSuggestions,
+      sub: "Katalog Quest Builder",
+      icon: Sparkles,
+      color: "from-pink-600/20 to-rose-900/10",
+      border: "border-pink-500/30",
+      iconColor: "text-pink-400",
+      href: "/admin/suggestions",
+    },
   ];
 
   return (
@@ -141,7 +158,14 @@ export default function AdminDashboardPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2.5">
+          <Link
+            href="/admin/suggestions"
+            className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#1b2130] hover:bg-[#252c40] border border-amber-500/30 text-amber-300 font-bold text-xs tracking-wider transition shadow-sm active:scale-95"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Quest Builder</span>
+          </Link>
           <Link
             href="/admin/quests"
             className="flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-black font-bold text-xs tracking-wider transition shadow-lg active:scale-95"
@@ -153,7 +177,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* KPI Cards Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
         {cards.map((card) => {
           const Icon = card.icon;
           return (

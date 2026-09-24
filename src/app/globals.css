@@ -128,13 +128,179 @@ header button {
     0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Wax Seal Crimson Button - Pastel Terracotta */
+/* Wax Seal Crimson Button - Apple Liquid Glass Redux */
 .rpg-wax-seal {
-  background: #b85d56;
-  border: 2px solid #e8a59e;
+  background: linear-gradient(180deg, rgba(214, 98, 90, 0.88) 0%, rgba(168, 65, 58, 0.78) 100%);
+  border: 1px solid rgba(254, 202, 202, 0.55);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
   box-shadow: 
-    inset 0 1px 2px rgba(255, 255, 255, 0.3),
-    0 2px 5px rgba(0, 0, 0, 0.4);
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25),
+    0 4px 16px rgba(184, 93, 86, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rpg-wax-seal:hover {
+  background: linear-gradient(180deg, rgba(230, 108, 100, 0.95) 0%, rgba(184, 75, 68, 0.85) 100%);
+  border-color: rgba(254, 202, 202, 0.75);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.65),
+    0 6px 22px rgba(184, 93, 86, 0.5);
+}
+
+/* ========================================================================= */
+/* APPLE GLASS UI (LIQUID GLASS / VISIONOS FROSTED GLASS EFFECT) FOR BUTTONS  */
+/* ========================================================================= */
+
+/* Universal Apple Glass baseline for all button elements */
+button,
+[role="button"],
+.apple-glass-btn {
+  position: relative;
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.18),
+    0 4px 14px 0 rgba(0, 0, 0, 0.25);
+}
+
+button:hover,
+[role="button"]:hover,
+.apple-glass-btn:hover {
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25),
+    0 6px 20px 0 rgba(0, 0, 0, 0.35);
+}
+
+button:active,
+[role="button"]:active,
+.apple-glass-btn:active {
+  transform: scale(0.97) !important;
+  box-shadow: 
+    inset 0 1px 0.5px 0 rgba(255, 255, 255, 0.15),
+    inset 0 2px 5px 0 rgba(0, 0, 0, 0.4),
+    0 2px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Dedicated Apple Glass Variants */
+
+/* 1. Apple Primary Terracotta/Ruby Liquid Glass */
+.glass-btn-primary {
+  background: linear-gradient(180deg, rgba(205, 93, 86, 0.85) 0%, rgba(166, 68, 62, 0.72) 100%) !important;
+  border: 1px solid rgba(254, 202, 202, 0.5) !important;
+  color: #fff7f5 !important;
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.3),
+    0 4px 16px 0 rgba(184, 93, 86, 0.35) !important;
+}
+.glass-btn-primary:hover {
+  background: linear-gradient(180deg, rgba(225, 105, 97, 0.95) 0%, rgba(186, 78, 72, 0.84) 100%) !important;
+  border-color: rgba(254, 202, 202, 0.75) !important;
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.65),
+    0 8px 24px 0 rgba(184, 93, 86, 0.5) !important;
+}
+
+/* 2. Apple Obsidian / Charcoal Frosted Glass (Secondary) */
+.glass-btn-secondary {
+  background: linear-gradient(180deg, rgba(42, 34, 27, 0.78) 0%, rgba(24, 18, 14, 0.68) 100%) !important;
+  border: 1px solid rgba(214, 186, 141, 0.35) !important;
+  color: #fae8b6 !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.3),
+    0 4px 16px 0 rgba(0, 0, 0, 0.3) !important;
+}
+.glass-btn-secondary:hover {
+  background: linear-gradient(180deg, rgba(58, 47, 37, 0.88) 0%, rgba(36, 27, 21, 0.78) 100%) !important;
+  border-color: rgba(250, 232, 182, 0.6) !important;
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45),
+    0 6px 22px 0 rgba(0, 0, 0, 0.45) !important;
+}
+
+/* 3. Apple Golden Amber Liquid Glass */
+.glass-btn-gold {
+  background: linear-gradient(180deg, rgba(202, 138, 4, 0.28) 0%, rgba(146, 64, 14, 0.2) 100%) !important;
+  border: 1px solid rgba(250, 204, 21, 0.45) !important;
+  color: #fef08a !important;
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25),
+    0 4px 18px 0 rgba(202, 138, 4, 0.25) !important;
+}
+.glass-btn-gold:hover {
+  background: linear-gradient(180deg, rgba(234, 179, 8, 0.38) 0%, rgba(180, 83, 9, 0.28) 100%) !important;
+  border-color: rgba(250, 204, 21, 0.7) !important;
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.55),
+    0 6px 24px 0 rgba(202, 138, 4, 0.4) !important;
+}
+
+/* 4. Apple Emerald Sage Liquid Glass */
+.glass-btn-emerald {
+  background: linear-gradient(180deg, rgba(46, 92, 79, 0.82) 0%, rgba(27, 60, 51, 0.7) 100%) !important;
+  border: 1px solid rgba(134, 239, 172, 0.45) !important;
+  color: #ffffff !important;
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25),
+    0 4px 18px 0 rgba(34, 197, 94, 0.25) !important;
+}
+.glass-btn-emerald:hover {
+  background: linear-gradient(180deg, rgba(58, 115, 99, 0.92) 0%, rgba(35, 78, 66, 0.8) 100%) !important;
+  border-color: rgba(134, 239, 172, 0.7) !important;
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.6),
+    0 6px 24px 0 rgba(34, 197, 94, 0.38) !important;
+}
+
+/* 5. Apple Frosted Icon Button */
+.glass-btn-icon {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #fae8b6 !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.25),
+    0 2px 8px 0 rgba(0, 0, 0, 0.2) !important;
+}
+.glass-btn-icon:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.4),
+    0 4px 14px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 6. Apple Glass Filter Pill */
+.glass-pill {
+  background: rgba(30, 24, 18, 0.7) !important;
+  border: 1px solid rgba(214, 186, 141, 0.25) !important;
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.25) !important;
+}
+.glass-pill:hover {
+  background: rgba(50, 40, 30, 0.8) !important;
+  border-color: rgba(250, 232, 182, 0.45) !important;
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.35),
+    0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+.glass-pill-active {
+  background: linear-gradient(180deg, rgba(65, 50, 36, 0.85) 0%, rgba(42, 32, 23, 0.8) 100%) !important;
+  border: 1px solid rgba(250, 232, 182, 0.6) !important;
+  color: #fae8b6 !important;
+  box-shadow: 
+    inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45),
+    0 4px 14px rgba(0, 0, 0, 0.35) !important;
 }
 
 /* Golden Ribbon Header */

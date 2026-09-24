@@ -120,14 +120,14 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
 
         {/* Auth Card with Heavy Carved Frame */}
         <div className="bg-[#24170f] border-4 border-[#855e24] rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
-          {/* Toggle Switch */}
-          <div className="flex items-center p-1 bg-[#120b07] rounded-full border-2 border-[#543b23] mb-6">
+          {/* Apple Segmented Glass Toggle Switch */}
+          <div className="flex items-center p-1.5 bg-[#120b07]/80 backdrop-blur-md rounded-full border border-[#543b23]/60 mb-6">
             <button
               type="button"
               onClick={() => { setIsSignUp(false); setMessage(null); }}
               className={`flex-1 py-2 text-xs font-bold rounded-full transition-all ${
                 !isSignUp
-                  ? 'bg-[#b85d56] text-[#fff7f5] border border-[#e8a59e] shadow-sm'
+                  ? 'glass-btn-primary'
                   : 'text-[#a8825c] hover:text-[#fae8b6]'
               }`}
             >
@@ -138,7 +138,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
               onClick={() => { setIsSignUp(true); setMessage(null); }}
               className={`flex-1 py-2 text-xs font-bold rounded-full transition-all ${
                 isSignUp
-                  ? 'bg-[#b85d56] text-[#fff7f5] border border-[#e8a59e] shadow-sm'
+                  ? 'glass-btn-primary'
                   : 'text-[#a8825c] hover:text-[#fae8b6]'
               }`}
             >
@@ -230,7 +230,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 bg-[#b85d56] hover:bg-[#a64e48] border-2 border-[#e8a59e] text-[#fff7f5] rounded-full text-xs font-bold uppercase tracking-wider transition hover:scale-105 active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2 mt-3 shadow-sm"
+              className="glass-btn-primary w-full py-3 rounded-full text-xs font-bold uppercase tracking-wider disabled:opacity-50 flex items-center justify-center gap-2 mt-3"
             >
               {loading ? (
                 <span>Memproses...</span>
@@ -266,7 +266,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
           <div className="mt-6 flex justify-center">
             <button
               onClick={onBack}
-              className="px-6 py-2.5 rounded-full bg-[#1b140e] hover:bg-[#2a1e16] border border-[#6b5235] hover:border-[#b89563] text-xs font-bold text-[#edd59e] hover:text-[#fae8b6] font-cinzel tracking-wider flex items-center gap-2 transition duration-300 shadow-sm active:scale-95"
+              className="glass-btn-secondary px-6 py-2.5 rounded-full text-xs font-bold text-[#edd59e] font-cinzel tracking-wider flex items-center gap-2"
             >
               <span>&larr;</span>
               <span>Kembali ke Beranda</span>

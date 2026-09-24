@@ -81,7 +81,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
             </div>
             <button
               onClick={onClose}
-              className="p-1.5 text-[#a8825c] hover:text-white rounded-lg hover:bg-[#351e11] transition"
+              className="glass-btn-icon p-1.5 text-[#cca981] hover:text-white rounded-full"
             >
               <X className="w-5 h-5" />
             </button>
@@ -107,7 +107,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                 </p>
                 <button
                   onClick={onClose}
-                  className="w-full py-2.5 bg-[#3a2a1d] hover:bg-[#4a3625] border-2 border-[#b89563] text-[#fae8b6] font-bold rounded-full text-xs uppercase tracking-wider transition shadow-sm"
+                  className="glass-btn-gold w-full py-2.5 rounded-full text-xs font-bold uppercase tracking-wider"
                 >
                   Lanjutkan Mode Demo
                 </button>
@@ -182,7 +182,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-2.5 bg-[#b85d56] hover:bg-[#a64e48] border-2 border-[#e8a59e] text-[#fff7f5] font-bold rounded-full text-xs uppercase tracking-wider transition disabled:opacity-50 mt-2 shadow-sm"
+                  className="glass-btn-primary w-full py-2.5 rounded-full text-xs font-bold uppercase tracking-wider disabled:opacity-50 mt-2"
                 >
                   {loading ? 'Memproses...' : isSignUp ? 'Daftar Sekarang' : 'Masuk Petualangan'}
                 </button>

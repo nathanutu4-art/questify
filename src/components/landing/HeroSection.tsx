@@ -98,39 +98,39 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
           </div>
 
-          <nav className="hidden md:flex items-center gap-8 text-xs font-bold text-[#cca981] font-cinzel tracking-wider">
-            <button onClick={onStartAdventure} className="hover:text-[#fef08a] transition">
+          <nav className="hidden md:flex items-center gap-3 text-xs font-bold text-[#cca981] font-cinzel tracking-wider">
+            <button onClick={onStartAdventure} className="px-3 py-1 rounded-full hover:text-[#fef08a] hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200">
               Offerings
             </button>
-            <button onClick={onStartAdventure} className="hover:text-[#fef08a] transition">
+            <button onClick={onStartAdventure} className="px-3 py-1 rounded-full hover:text-[#fef08a] hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200">
               Why Misiku
             </button>
-            <button onClick={onStartAdventure} className="hover:text-[#fef08a] transition">
+            <button onClick={onStartAdventure} className="px-3 py-1 rounded-full hover:text-[#fef08a] hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200">
               Skill Tree
             </button>
-            <button onClick={onStartAdventure} className="hover:text-[#fef08a] transition">
+            <button onClick={onStartAdventure} className="px-3 py-1 rounded-full hover:text-[#fef08a] hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200">
               Achievements
             </button>
-            <button onClick={onStartAdventure} className="hover:text-[#fef08a] transition">
+            <button onClick={onStartAdventure} className="px-3 py-1 rounded-full hover:text-[#fef08a] hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200">
               Help
             </button>
           </nav>
         </div>
 
-        {/* Right: Day/Night Mode Fantasy Toggle Button + Pastel Bronze Login Button */}
+        {/* Right: Day/Night Mode Apple Glass Toggle Button + Golden Liquid Glass Login Button */}
         <div className="flex items-center gap-3.5">
-          {/* Day / Night Mode Fantasy Toggle Button */}
+          {/* Day / Night Mode Apple Glass Toggle Button */}
           <button
             onClick={() => setIsDayMode(!isDayMode)}
             title={isDayMode ? 'Beralih ke Mode Malam' : 'Beralih ke Mode Siang'}
-            className="group relative flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#1b140e]/90 hover:bg-[#2b1f14] border border-[#d6ba8d] hover:border-[#fae8b6] transition-all duration-300 shadow-sm text-xs font-cinzel tracking-wider active:scale-95"
+            className="glass-btn-secondary group relative flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-cinzel tracking-wider"
             aria-label="Toggle Day / Night Mode"
           >
             <div className={`w-4 h-4 flex items-center justify-center transition-transform duration-500 ${isDayMode ? 'rotate-90 scale-110' : 'rotate-0'}`}>
               {isDayMode ? (
-                <Sun className="w-3.5 h-3.5 text-[#facc15] drop-shadow-[0_0_6px_rgba(250,204,21,0.7)]" />
+                <Sun className="w-3.5 h-3.5 text-[#facc15] drop-shadow-[0_0_8px_rgba(250,204,21,0.8)]" />
               ) : (
-                <Moon className="w-3.5 h-3.5 text-[#c7d2fe] drop-shadow-[0_0_6px_rgba(199,210,254,0.7)]" />
+                <Moon className="w-3.5 h-3.5 text-[#c7d2fe] drop-shadow-[0_0_8px_rgba(199,210,254,0.8)]" />
               )}
             </div>
             <span className="hidden sm:inline text-[11px] font-bold text-[#ebd5ad] group-hover:text-[#fae8b6] transition">
@@ -138,10 +138,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </span>
           </button>
 
-          {/* Login Button */}
+          {/* Login Button - Apple Golden Liquid Glass */}
           <button
             onClick={onBeginQuest}
-            className="px-6 py-2 rounded-full bg-[#261f18] hover:bg-[#362b21] border border-[#d6ba8d] hover:border-[#fae8b6] text-xs font-bold text-[#fae8b6] font-cinzel tracking-wider shadow-sm transition duration-300 active:scale-95"
+            className="glass-btn-gold px-6 py-2 rounded-full text-xs font-bold font-cinzel tracking-wider"
           >
             Login
           </button>
@@ -177,21 +177,21 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </p>
           </div>
 
-          {/* CTA Buttons Placement - Centered on Mobile, Right on Desktop */}
+          {/* CTA Buttons Placement - Apple Liquid Glass Hero Actions */}
           <div className="flex flex-col sm:flex-row items-center md:items-end justify-center md:justify-end gap-3.5 pt-2 w-full sm:w-auto">
-            {/* Primary CTA: START THE ADVENTURE → (Soft Pastel Terracotta/Rose) */}
+            {/* Primary CTA: START THE ADVENTURE → (Apple Ruby Liquid Glass) */}
             <button
               onClick={onStartAdventure}
-              className="group w-full sm:w-auto px-7 py-3 rounded-full bg-[#b85d56] hover:bg-[#a64e48] border-2 border-[#e8a59e] text-[#fff7f5] text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 flex items-center justify-center gap-2.5 active:scale-95 shadow-sm"
+              className="glass-btn-primary group w-full sm:w-auto px-7 py-3 rounded-full text-xs sm:text-sm font-bold tracking-wider flex items-center justify-center gap-2.5"
             >
               <span>Mulai Petualangan</span>
               <ArrowRight className="w-4 h-4 text-[#fff7f5] group-hover:translate-x-1.5 transition-transform" />
             </button>
 
-            {/* Secondary CTA: BEGIN YOUR QUEST → (Soft Pastel Slate/Wood with Pastel Gold Border) */}
+            {/* Secondary CTA: BEGIN YOUR QUEST → (Apple Obsidian Frosted Glass) */}
             <button
               onClick={onBeginQuest}
-              className="group w-full sm:w-auto px-7 py-3 rounded-full bg-[#261f18]/90 hover:bg-[#362b21] border-2 border-[#d6ba8d] hover:border-[#fae8b6] text-[#fae8b6] text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 flex items-center justify-center gap-2.5 active:scale-95 backdrop-blur-md shadow-sm"
+              className="glass-btn-secondary group w-full sm:w-auto px-7 py-3 rounded-full text-xs sm:text-sm font-bold tracking-wider flex items-center justify-center gap-2.5"
             >
               <span>Mulai jalankan Misimu</span>
               <ArrowRight className="w-4 h-4 text-[#d6ba8d] group-hover:text-[#fae8b6] group-hover:translate-x-1.5 transition-transform" />

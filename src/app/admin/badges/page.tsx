@@ -181,7 +181,7 @@ export default function AdminBadgesPage() {
 
         <button
           onClick={() => setIsCreateOpen(true)}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-black font-bold text-xs tracking-wider transition shadow-lg active:scale-95 self-start sm:self-auto"
+          className="glass-btn-gold flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs tracking-wider self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
           <span>Tambah Lencana Baru</span>
@@ -212,14 +212,14 @@ export default function AdminBadgesPage() {
                   <div className="flex items-center gap-1.5">
                     <button
                       onClick={() => setEditingBadge({ ...b })}
-                      className="p-1.5 rounded-lg bg-[#1a1f2c] hover:bg-[#252c3f] text-slate-300 hover:text-amber-400 transition"
+                      className="glass-btn-icon p-2 rounded-lg text-slate-300 hover:text-amber-400"
                       title="Edit Lencana"
                     >
                       <Edit className="w-3.5 h-3.5" />
                     </button>
                     <button
                       onClick={() => handleDelete(b.id)}
-                      className="p-1.5 rounded-lg bg-[#1a1f2c] hover:bg-red-950/60 text-slate-400 hover:text-red-400 transition"
+                      className="glass-btn-icon p-2 rounded-lg text-slate-400 hover:text-red-400"
                       title="Hapus Lencana"
                     >
                       <Trash2 className="w-3.5 h-3.5" />
@@ -261,7 +261,7 @@ export default function AdminBadgesPage() {
                 <Plus className="w-4 h-4 text-amber-400" />
                 <span>Buat Lencana Baru</span>
               </h2>
-              <button onClick={() => setIsCreateOpen(false)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setIsCreateOpen(false)} className="glass-btn-icon p-1.5 rounded-full text-slate-400 hover:text-white">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -370,13 +370,13 @@ export default function AdminBadgesPage() {
                 <button
                   type="button"
                   onClick={() => setIsCreateOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-[#1a1f2c] text-slate-300 hover:text-white"
+                  className="glass-btn-secondary px-4 py-2 rounded-xl text-slate-300 hover:text-white"
                 >
                   Batal
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-black font-bold font-cinzel tracking-wider shadow"
+                  className="glass-btn-gold px-5 py-2 rounded-xl font-bold font-cinzel tracking-wider"
                 >
                   Simpan Lencana
                 </button>
@@ -395,7 +395,7 @@ export default function AdminBadgesPage() {
                 <Edit className="w-4 h-4 text-amber-400" />
                 <span>Edit Lencana</span>
               </h2>
-              <button onClick={() => setEditingBadge(null)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setEditingBadge(null)} className="glass-btn-icon p-1.5 rounded-full text-slate-400 hover:text-white">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -454,13 +454,13 @@ export default function AdminBadgesPage() {
                 <button
                   type="button"
                   onClick={() => setEditingBadge(null)}
-                  className="px-4 py-2 rounded-xl bg-[#1a1f2c] text-slate-300 hover:text-white"
+                  className="glass-btn-secondary px-4 py-2 rounded-xl text-slate-300 hover:text-white"
                 >
                   Batal
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-black font-bold font-cinzel tracking-wider shadow"
+                  className="glass-btn-gold px-5 py-2 rounded-xl font-bold font-cinzel tracking-wider"
                 >
                   Perbarui Lencana
                 </button>

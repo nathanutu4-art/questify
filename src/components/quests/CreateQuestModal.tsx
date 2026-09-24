@@ -9,9 +9,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface CreateQuestModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenQuestBuilder?: () => void;
 }
 
-export const CreateQuestModal: React.FC<CreateQuestModalProps> = ({ isOpen, onClose }) => {
+export const CreateQuestModal: React.FC<CreateQuestModalProps> = ({ isOpen, onClose, onOpenQuestBuilder }) => {
   const { categories, addQuest } = useQuest();
 
   const [title, setTitle] = useState('');
@@ -81,7 +82,7 @@ export const CreateQuestModal: React.FC<CreateQuestModalProps> = ({ isOpen, onCl
             </div>
             <button
               onClick={onClose}
-              className="p-1.5 text-[#a8825c] hover:text-white rounded-lg hover:bg-[#351e11] transition"
+              className="glass-btn-icon p-1.5 rounded-full text-[#cca981] hover:text-white"
             >
               <X className="w-5 h-5" />
             </button>
@@ -89,6 +90,28 @@ export const CreateQuestModal: React.FC<CreateQuestModalProps> = ({ isOpen, onCl
 
           {/* Form */}
           <form onSubmit={handleSubmit} className="p-6 space-y-4 bg-gradient-to-b from-[#24170f] to-[#1a110a]">
+            {/* Quest Builder shortcut */}
+            {onOpenQuestBuilder && (
+              <div className="p-3 rounded-2xl bg-[#362112]/70 border border-[#b8860b]/40 flex items-center justify-between gap-2 shadow-inner">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-amber-300 shrink-0" />
+                  <span className="text-xs text-[#fae8b6] font-serif">
+                    Mau ide kegiatan terkurasi tanpa mengetik?
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    onOpenQuestBuilder();
+                  }}
+                  className="glass-btn-gold px-3 py-1 rounded-full text-[11px] font-bold shrink-0 text-white hover:scale-105 transition"
+                >
+                  Quest Builder ✦
+                </button>
+              </div>
+            )}
+
             {/* Title */}
             <div>
               <label className="block text-xs font-bold text-[#fde047] uppercase tracking-wider mb-1">
@@ -131,10 +154,10 @@ export const CreateQuestModal: React.FC<CreateQuestModalProps> = ({ isOpen, onCl
                       key={cat.id}
                       type="button"
                       onClick={() => setCategoryId(cat.id)}
-                      className={`p-2 rounded-xl border-2 text-center transition-all flex flex-col items-center gap-1 ${
+                      className={`p-2 rounded-xl border text-center transition-all flex flex-col items-center gap-1 ${
                         isSelected
-                          ? 'border-[#ca8a04] bg-[#3a2618] shadow-md'
-                          : 'border-[#422916] bg-[#170e08] hover:border-[#633e21]'
+                          ? 'glass-btn-gold border-amber-400 shadow-md'
+                          : 'glass-pill border-white/10 hover:border-amber-400/50'
                       }`}
                     >
                       <div
@@ -162,10 +185,10 @@ export const CreateQuestModal: React.FC<CreateQuestModalProps> = ({ isOpen, onCl
                       key={diff}
                       type="button"
                       onClick={() => setDifficulty(diff)}
-                      className={`p-2.5 rounded-xl border-2 text-center transition-all ${
+                      className={`p-2.5 rounded-xl border text-center transition-all ${
                         isSelected
-                          ? 'border-[#facc15] bg-[#422814] shadow-lg shadow-amber-950/60'
-                          : 'border-[#422916] bg-[#170e08] hover:border-[#633e21]'
+                          ? 'glass-btn-gold border-amber-300 shadow-lg shadow-amber-950/60'
+                          : 'glass-pill border-white/10 hover:border-amber-400/50'
                       }`}
                     >
                       <div className="text-xs font-black text-[#ffffff]">{diff}</div>
@@ -194,14 +217,14 @@ export const CreateQuestModal: React.FC<CreateQuestModalProps> = ({ isOpen, onCl
               <button
                 type="button"
                 onClick={onClose}
-                className="px-5 py-2 rounded-full text-xs font-bold text-[#c4aa87] hover:text-white transition"
+                className="glass-btn-secondary px-5 py-2 rounded-full text-xs font-bold text-[#c4aa87] hover:text-white"
               >
                 Batal
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting || !title.trim()}
-                className="px-6 py-2.5 bg-[#b85d56] hover:bg-[#a64e48] border-2 border-[#e8a59e] text-[#fff7f5] rounded-full text-xs font-bold uppercase tracking-wider transition hover:scale-105 active:scale-95 flex items-center gap-2 disabled:opacity-50 shadow-sm"
+                className="glass-btn-primary px-6 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2 disabled:opacity-50"
               >
                 <Swords className="w-4 h-4 text-white" />
                 <span>Mulai Quest</span>

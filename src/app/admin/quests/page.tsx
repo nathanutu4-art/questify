@@ -209,7 +209,7 @@ export default function AdminQuestsPage() {
 
         <button
           onClick={() => setIsCreateModalOpen(true)}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-black font-bold text-xs tracking-wider transition shadow-lg active:scale-95 self-start sm:self-auto"
+          className="glass-btn-gold flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-xs tracking-wider self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
           <span>Tambah Quest Baru</span>
@@ -358,14 +358,14 @@ export default function AdminQuestsPage() {
                       <td className="py-3.5 px-4 text-right space-x-2">
                         <button
                           onClick={() => setEditingQuest({ ...quest })}
-                          className="p-1.5 rounded-lg bg-[#1a1f2c] hover:bg-[#252c3f] text-slate-300 hover:text-amber-400 transition"
+                          className="glass-btn-icon p-2 rounded-lg text-slate-300 hover:text-amber-400"
                           title="Edit Quest"
                         >
                           <Edit className="w-3.5 h-3.5" />
                         </button>
                         <button
                           onClick={() => handleDeleteQuest(quest.id)}
-                          className="p-1.5 rounded-lg bg-[#1a1f2c] hover:bg-red-950/60 text-slate-400 hover:text-red-400 transition"
+                          className="glass-btn-icon p-2 rounded-lg text-slate-400 hover:text-red-400"
                           title="Hapus Quest"
                         >
                           <Trash2 className="w-3.5 h-3.5" />
@@ -391,7 +391,7 @@ export default function AdminQuestsPage() {
               </h2>
               <button
                 onClick={() => setIsCreateModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="glass-btn-icon p-1.5 rounded-full text-slate-400 hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -481,13 +481,13 @@ export default function AdminQuestsPage() {
                 <button
                   type="button"
                   onClick={() => setIsCreateModalOpen(false)}
-                  className="px-4 py-2 rounded-xl bg-[#1a1f2c] text-slate-300 hover:text-white"
+                  className="glass-btn-secondary px-4 py-2 rounded-xl text-slate-300 hover:text-white"
                 >
                   Batal
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-black font-bold font-cinzel tracking-wider shadow"
+                  className="glass-btn-gold px-5 py-2 rounded-xl font-bold font-cinzel tracking-wider"
                 >
                   Simpan Quest
                 </button>
@@ -508,7 +508,7 @@ export default function AdminQuestsPage() {
               </h2>
               <button
                 onClick={() => setEditingQuest(null)}
-                className="text-slate-400 hover:text-white"
+                className="glass-btn-icon p-1.5 rounded-full text-slate-400 hover:text-white"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -595,13 +595,13 @@ export default function AdminQuestsPage() {
                 <button
                   type="button"
                   onClick={() => setEditingQuest(null)}
-                  className="px-4 py-2 rounded-xl bg-[#1a1f2c] text-slate-300 hover:text-white"
+                  className="glass-btn-secondary px-4 py-2 rounded-xl text-slate-300 hover:text-white"
                 >
                   Batal
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-black font-bold font-cinzel tracking-wider shadow"
+                  className="glass-btn-gold px-5 py-2 rounded-xl font-bold font-cinzel tracking-wider"
                 >
                   Perbarui Quest
                 </button>

@@ -1,4 +1,4 @@
-import { Category, Quest, Badge, UserProfile } from '@/types/quest';
+import { Category, Quest, Badge, UserProfile, QuestSuggestion } from '@/types/quest';
 
 export const INITIAL_CATEGORIES: Category[] = [
   {
@@ -180,4 +180,179 @@ export const INITIAL_PROFILE: UserProfile = {
   current_streak: 3,
   last_active_date: today,
 };
+
+export const INITIAL_SUGGESTIONS: QuestSuggestion[] = [
+  // Kesehatan
+  {
+    id: 'sug-health-1',
+    title: 'Minum 2 Liter Air Putih (Potion of Hydration)',
+    description: 'Penuhi asupan cairan tubuh dengan meminum minimal 8 gelas atau 2 liter air putih segar sepanjang hari.',
+    category_id: 'health',
+    difficulty: 'EASY',
+    base_xp: 50,
+    category: INITIAL_CATEGORIES[1],
+  },
+  {
+    id: 'sug-health-2',
+    title: 'Latihan Fisik / Gym 45 Menit (Warrior Training)',
+    description: 'Lakukan olahraga kardio, kalistenik, atau angkat beban minimal 45 menit untuk menempa ketahanan fisik.',
+    category_id: 'health',
+    difficulty: 'MEDIUM',
+    base_xp: 100,
+    category: INITIAL_CATEGORIES[1],
+  },
+  {
+    id: 'sug-health-3',
+    title: 'Tidur Berkualitas 8 Jam (Deep Slumber Rest)',
+    description: 'Matikan layar gadget 30 menit sebelum tidur dan dapatkan istirahat optimal selama 7-8 jam penuh.',
+    category_id: 'health',
+    difficulty: 'MEDIUM',
+    base_xp: 100,
+    category: INITIAL_CATEGORIES[1],
+  },
+  {
+    id: 'sug-health-4',
+    title: 'Jalan Kaki 10.000 Langkah (Ranger Expedition)',
+    description: 'Jelajahi langkah kakimu di luar ruangan atau treadmill hingga mencapai target 10.000 langkah harian.',
+    category_id: 'health',
+    difficulty: 'HARD',
+    base_xp: 150,
+    category: INITIAL_CATEGORIES[1],
+  },
+
+  // Pekerjaan
+  {
+    id: 'sug-work-1',
+    title: 'Review & Bersihkan Inbox Email (Clear the Mess)',
+    description: 'Sortir dan proses email masuk penting, arsipkan pesan usang, dan capai status Inbox Zero.',
+    category_id: 'work',
+    difficulty: 'EASY',
+    base_xp: 50,
+    category: INITIAL_CATEGORIES[0],
+  },
+  {
+    id: 'sug-work-2',
+    title: 'Deep Work 90 Menit Tanpa Distraksi (Arcane Focus)',
+    description: 'Blokir semua notifikasi media sosial dan selesaikan tugas paling rumit dengan konsentrasi penuh.',
+    category_id: 'work',
+    difficulty: 'MEDIUM',
+    base_xp: 100,
+    category: INITIAL_CATEGORIES[0],
+  },
+  {
+    id: 'sug-work-3',
+    title: 'Tuntaskan Deliverable Proyek Utama (Conquer the Task)',
+    description: 'Kirimkan tugas besar atau serahkan laporan penting proyek ke tim atau klien hari ini.',
+    category_id: 'work',
+    difficulty: 'HARD',
+    base_xp: 150,
+    category: INITIAL_CATEGORIES[0],
+  },
+  {
+    id: 'sug-work-4',
+    title: 'Rencanakan Prioritas Esok Hari (Tactical Blueprint)',
+    description: 'Catat 3 prioritas mutlak yang harus dituntaskan esok pagi sebelum hari ini berakhir.',
+    category_id: 'work',
+    difficulty: 'EASY',
+    base_xp: 50,
+    category: INITIAL_CATEGORIES[0],
+  },
+
+  // Edukasi
+  {
+    id: 'sug-edu-1',
+    title: 'Membaca Buku Non-Fiksi 20 Halaman (Tome of Wisdom)',
+    description: 'Dapatkan wawasan berharga dari buku pengembangan diri, sains, kepemimpinan, atau teknologi.',
+    category_id: 'education',
+    difficulty: 'EASY',
+    base_xp: 50,
+    category: INITIAL_CATEGORIES[2],
+  },
+  {
+    id: 'sug-edu-2',
+    title: 'Belajar Kosakata / Bahasa Asing 15 Menit (Linguist Scroll)',
+    description: 'Latih aplikasi bahasa atau hafalkan 10 kosakata baru untuk memperkaya kemampuan berbahasa.',
+    category_id: 'education',
+    difficulty: 'EASY',
+    base_xp: 50,
+    category: INITIAL_CATEGORIES[2],
+  },
+  {
+    id: 'sug-edu-3',
+    title: 'Selesaikan 1 Modul Kursus / Tutorial (Scholar Enlightenment)',
+    description: 'Tonton video materi dan kerjakan kuis latihan dari platform pembelajaran yang sedang kamu ikuti.',
+    category_id: 'education',
+    difficulty: 'MEDIUM',
+    base_xp: 100,
+    category: INITIAL_CATEGORIES[2],
+  },
+  {
+    id: 'sug-edu-4',
+    title: 'Coding / Problem Solving 60 Menit (Spellcraft Mastery)',
+    description: 'Selesaikan setidaknya 2 soal algoritma di LeetCode/Codewars atau buat fitur baru pada proyek coding.',
+    category_id: 'education',
+    difficulty: 'HARD',
+    base_xp: 150,
+    category: INITIAL_CATEGORIES[2],
+  },
+
+  // Pribadi
+  {
+    id: 'sug-personal-1',
+    title: 'Merapikan Meja Kerja & Kamar (Domain Sanctuary)',
+    description: 'Bersihkan debu, rapikan kabel, dan atur lingkungan sekitarmu agar pikiran terasa lebih jernih.',
+    category_id: 'personal',
+    difficulty: 'EASY',
+    base_xp: 50,
+    category: INITIAL_CATEGORIES[3],
+  },
+  {
+    id: 'sug-personal-2',
+    title: 'Meditasi / Jurnal Refleksi Diri 10 Menit (Soul Calming)',
+    description: 'Duduk tenang dalam hening, atur nafas meditatif, atau tuliskan rasa syukur di buku catatanmu.',
+    category_id: 'personal',
+    difficulty: 'EASY',
+    base_xp: 50,
+    category: INITIAL_CATEGORIES[3],
+  },
+  {
+    id: 'sug-personal-3',
+    title: 'Digital Detox 2 Jam Sebelum Tidur (Shield of Peace)',
+    description: 'Jauhkan ponsel dan media sosial. Luangkan waktu untuk mengobrol santai, membaca, atau hobi santai.',
+    category_id: 'personal',
+    difficulty: 'MEDIUM',
+    base_xp: 100,
+    category: INITIAL_CATEGORIES[3],
+  },
+
+  // Keuangan
+  {
+    id: 'sug-finance-1',
+    title: 'Audit Pengeluaran Harian & Catat Struk (Vault Inspection)',
+    description: 'Catat semua transaksi masuk dan keluar hari ini ke aplikasi keuangan atau buku kas pribadi.',
+    category_id: 'finance',
+    difficulty: 'EASY',
+    base_xp: 50,
+    category: INITIAL_CATEGORIES[4],
+  },
+  {
+    id: 'sug-finance-2',
+    title: 'No Spend Day - Masak Makanan Sendiri (Frugal Discipline)',
+    description: 'Tantang dirimu untuk tidak mengeluarkan uang konsumtif dan nikmati masakan lezat buatan sendiri.',
+    category_id: 'finance',
+    difficulty: 'MEDIUM',
+    base_xp: 100,
+    category: INITIAL_CATEGORIES[4],
+  },
+  {
+    id: 'sug-finance-3',
+    title: 'Alokasikan Dana Tabungan / Investasi (Treasury Vault)',
+    description: 'Pindahkan sebagian pendapatan ke pos tabungan darurat, deposito, atau reksadana/saham.',
+    category_id: 'finance',
+    difficulty: 'HARD',
+    base_xp: 150,
+    category: INITIAL_CATEGORIES[4],
+  },
+];
+
 

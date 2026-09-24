@@ -53,3 +53,16 @@ export interface UserCategoryXP {
   color: string;
 }
 
+export interface QuestSuggestion {
+  id: string;
+  title: string;
+  description?: string;
+  category_id?: string;
+  difficulty: QuestDifficulty;
+  base_xp: number;
+  tags?: string[];
+  is_active?: boolean;
+  created_at?: string;
+  category?: Category;
+}
+
